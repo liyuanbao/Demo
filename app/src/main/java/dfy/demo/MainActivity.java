@@ -53,8 +53,7 @@ public class MainActivity extends BaseActivity implements HomeView {
                 View inflate = LayoutInflater.from(mContext).inflate(R.layout.pouwidow, null, false);
                 BasePopuWindow basePopuWindow = new BasePopuWindow();
                 basePopuWindow.getInstanceWindow(inflate)
-                        .setShowAsDropDown(button, 0.8f, 0.5f)
-                        .backgroundAlpha(0.5f);
+                        .setShowAsDropDown(button, 0.8f, 0.5f);
             }
         });
     }
