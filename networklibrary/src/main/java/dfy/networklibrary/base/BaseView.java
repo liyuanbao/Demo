@@ -8,8 +8,6 @@ import android.os.Bundle;
 
 public interface BaseView {
 
-    int setContentView();
-
     void initView(Bundle savedInstanceState);
 
     void initData();

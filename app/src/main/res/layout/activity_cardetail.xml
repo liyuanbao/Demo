@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+    android:background="@color/background"
+    android:fitsSystemWindows="true"
+    android:clipToPadding="true">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:orientation="vertical">
+
+                <dfy.demo.widget.ToolTitle
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"></dfy.demo.widget.ToolTitle>
+                <ImageView
+                    android:id="@+id/iv_pic"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/su_ic_empty"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/color_caritem_bg"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="10dp"
+                        android:paddingLeft="10dp"
+                        android:text="青海湖自驾五日游"
+                        android:textColor="@color/background"/>
+
+                    <TextView
+                        android:id="@+id/tv_number"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:padding="10dp"
+                        android:paddingRight="10dp"
+                        android:text="3600"
+                        android:textColor="@color/color_caritem_money"/>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/tv_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="各地"
+                    android:textColor="@color/color_mid"
+                    android:textSize="@dimen/dimens_16sp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="10dp"
+                    android:gravity="center_vertical"
+                    >
+
+                    <TextView
+                        android:id="@+id/tv_comment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@mipmap/ic_launcher"
+                        android:drawablePadding="5dp"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:text="1"
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_laud"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:drawableLeft="@mipmap/ic_launcher"
+                        android:text="1"
+                        android:gravity="center_vertical"
+                        android:drawablePadding="5dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_money"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:text="￥36000"
+                        android:gravity="end"
+                        android:textColor="@color/color_caritem_money"
+                        android:paddingRight="10dp"
+                        android:textSize="@dimen/dimens_16sp"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@color/white">
+                <TextView
+                    android:id="@+id/tv_xc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="详细行程"
+                    android:padding="10dp"
+                    android:textSize="@dimen/dimens_16sp"
+                    android:textColor="@color/color_mid"/>
+                <TextView
+                    android:id="@+id/tv_jg"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="价格明细"
+                    android:padding="10dp"
+                    android:textSize="@dimen/dimens_16sp"
+                    android:textColor="@color/color_mid"/>
+                <TextView
+                    android:id="@+id/tv_yd"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="预定须知"
+                    android:padding="10dp"
+                    android:textSize="@dimen/dimens_16sp"
+                    android:textColor="@color/color_mid"/>
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout
+        android:id="@+id/bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_collect"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:drawableTop="@mipmap/ic_launcher"
+                android:drawablePadding="3dp"
+                android:gravity="center_vertical|center"
+                android:paddingLeft="10dp"
+                android:text="收藏"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:textColor="@color/color_max"
+                />
+            <TextView
+                android:id="@+id/tv_chat"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:drawableTop="@mipmap/ic_launcher"
+                android:drawablePadding="3dp"
+                android:gravity="center_vertical|center"
+                android:paddingLeft="10dp"
+                android:text="客服"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:textColor="@color/color_max"
+                />
+            <TextView
+                android:id="@+id/tv_"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:drawableTop="@mipmap/ic_launcher"
+                android:drawablePadding="3dp"
+                android:gravity="center_vertical|center"
+                android:paddingLeft="10dp"
+                android:text="电话"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:textColor="@color/color_max"
+                />
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_bm"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingLeft="10dp"
+            android:text="我要报名"
+            android:gravity="center"
+            android:drawablePadding="5dp"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            android:background="@color/color_caritem_money"
+            />
+    </LinearLayout>
+</RelativeLayout>

@@ -17,6 +17,7 @@ import dfy.networklibrary.App;
 public class BasePopuWindow extends PopupWindow{
 
     private PopupWindow mPopupWindow;
+    private View mView;
 
     private boolean isHide=true;
     public BasePopuWindow setClickFocusable(boolean isHide){
@@ -36,6 +37,10 @@ public class BasePopuWindow extends PopupWindow{
             }
         });
         return this;
+    }
+
+    public View getContentView(){
+        return mView;
     }
 
     /**

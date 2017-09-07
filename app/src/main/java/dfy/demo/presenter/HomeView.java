@@ -10,4 +10,6 @@ import dfy.demo.bean.DetailBean;
 public interface HomeView extends BaseView {
 
     void getIndex(DetailBean homeBean);
+
+    void fail();
 }

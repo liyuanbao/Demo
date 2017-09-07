@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/background"
+                android:orientation="vertical">
+
+    <dfy.demo.widget.ToolTitle
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_tool_bg_red">
+    </dfy.demo.widget.ToolTitle>
+
+    <dfy.demo.widget.RZLiuChengView
+        android:id="@+id/rz_liuchen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="40dp">
+    </dfy.demo.widget.RZLiuChengView>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_liuchen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </android.support.v4.view.ViewPager>
+
+
+
+
+
+</LinearLayout>

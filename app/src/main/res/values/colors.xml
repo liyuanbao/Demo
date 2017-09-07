@@ -2,5 +2,20 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#999</color>
+
+
+    <!-- 爱自驾-->
+    <color name="background">#EEE</color>
+    <color name="white">#FFF</color>
+    <color name="color_tool_title">#FFFF</color>
+    <color name="color_tool_bg_red">#D43839</color>
+    <color name="color_caritem">#333</color>
+    <color name="color_caritem_money">#D43839</color>
+    <color name="color_caritem_bg">#999</color>
+    <color name="color_max">#999</color>
+    <color name="color_mid">#666</color>
+    <color name="color_min">#333</color>
+    <color name="color_cicle">#ddd</color>
+
 </resources>

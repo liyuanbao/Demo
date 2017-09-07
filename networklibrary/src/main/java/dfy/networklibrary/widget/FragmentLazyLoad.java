@@ -1,12 +1,15 @@
 package dfy.networklibrary.widget;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import dfy.networklibrary.base.BaseView;
@@ -24,13 +27,17 @@ public abstract class FragmentLazyLoad extends Fragment implements BaseView{
     protected boolean isLoad = false;
     protected final String TAG = "FragmentLazyLoad";
     private View view;
+    private Toast mToast;
+    private Context mContext;
+
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(setContentView(), container, false);
+        view = inflater.inflate(setInflaterView(), container, false);
         isInit = true;
+        mContext=getContext();
         /**初始化的时候去加载数据**/
         initView(savedInstanceState);
         setListener();
@@ -38,6 +45,12 @@ public abstract class FragmentLazyLoad extends Fragment implements BaseView{
         isCanLoadData();
         return view;
     }
+
+    /**
+     * 视图Id
+     * @return
+     */
+    public abstract int setInflaterView();
 
     /**
      * 视图是否已经对用户可见，系统的方法
@@ -105,7 +118,7 @@ public abstract class FragmentLazyLoad extends Fragment implements BaseView{
     }
 
 
-    public abstract int setContentView();
+//    public abstract int setContentView();
 
     public abstract void initView(Bundle savedInstanceState);
 
@@ -120,12 +133,16 @@ public abstract class FragmentLazyLoad extends Fragment implements BaseView{
 
     @Override
     public void toastLong(String msg) {
-
+        if (mToast==null) mToast=Toast.makeText(getContext(),msg,Toast.LENGTH_LONG);
+        mToast.setText(msg);
+        mToast.show();
     }
 
     @Override
     public void toastShort(String msg) {
-
+        if (mToast==null) mToast=Toast.makeText(getContext(),msg,Toast.LENGTH_LONG);
+        mToast.setText(msg);
+        mToast.show();
     }
 
     @Override
@@ -160,5 +177,6 @@ public abstract class FragmentLazyLoad extends Fragment implements BaseView{
      */
     protected void stopLoad() {
     }
+
 
 }

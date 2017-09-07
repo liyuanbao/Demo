@@ -9,8 +9,9 @@ import dfy.networklibrary.widget.FragmentLazyLoad;
  */
 
 public class DemoFragmennt extends FragmentLazyLoad {
+
     @Override
-    public int setContentView() {
+    public int setInflaterView() {
         return 0;
     }
 

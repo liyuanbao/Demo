@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Toast;
 
 import dfy.networklibrary.App;
 
@@ -12,25 +14,9 @@ import dfy.networklibrary.App;
  */
 
 public abstract class BaseActivity extends AppCompatActivity implements BaseView{
-
+    private Toast mToast;
     public Context mContext;
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(setContentView());
-//        App.getActivityManager().pushActivity(this);
-        mContext=this;
-        initView(savedInstanceState);
-        initData();
-        setListener();
 
-    }
-
-    /**
-     * 获取布局id;
-     * @return
-     */
-    public abstract int setContentView();
 
     /**
      * 初始化View
@@ -55,7 +41,9 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
      */
     @Override
     public void toastLong(String msg) {
-
+        if (mToast==null) mToast=Toast.makeText(mContext,msg,Toast.LENGTH_LONG);
+        mToast.setText(msg);
+        mToast.show();
     }
 
     /**
@@ -64,7 +52,9 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
      */
     @Override
     public void toastShort(String msg) {
-
+        if (mToast==null) mToast=Toast.makeText(mContext,msg,Toast.LENGTH_LONG);
+        mToast.setText(msg);
+        mToast.show();
     }
 
     /**
@@ -82,4 +72,5 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     public void netRequestFail() {
 
     }
+
 }

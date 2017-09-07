@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/background"
+              android:orientation="vertical">
+
+   <ScrollView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:orientation="vertical">
+           <dfy.demo.widget.ToolTitle
+               android:id="@+id/toolbar"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:background="@color/color_tool_bg_red">
+           </dfy.demo.widget.ToolTitle>
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="vertical"
+               android:background="@color/white"
+               android:layout_marginTop="10dp"
+               android:divider="@drawable/divider_linear"
+               android:showDividers="middle">
+
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="支付方式"
+                   android:padding="10dp"
+                   android:textSize="@dimen/dimens_16sp"
+                   android:textColor="@color/color_mid"/>
+               <RadioGroup
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:orientation="vertical"
+                   android:divider="@drawable/divider_linear"
+                   android:showDividers="middle">
+
+                   <RadioButton
+                       android:id="@+id/rb_wechat"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:text="微信支付"
+                       android:gravity="center_vertical"
+                       android:drawableRight="@mipmap/ic_launcher"
+                       android:drawableLeft="@mipmap/ic_launcher"
+                       android:padding="10dp"
+                       android:button="@null"
+                       android:drawablePadding="10dp"
+                       android:textColor="@color/color_mid"
+                       android:textSize="@dimen/dimens_15sp"
+                       />
+                   <RadioButton
+                       android:id="@+id/rb_alipay"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:text="支付宝支付"
+                       android:gravity="center_vertical"
+                       android:drawableRight="@mipmap/ic_launcher"
+                       android:drawableLeft="@mipmap/ic_launcher"
+                       android:padding="10dp"
+                       android:button="@null"
+                       android:drawablePadding="10dp"
+                       android:textColor="@color/color_mid"
+                       android:textSize="@dimen/dimens_15sp"
+                       />
+
+               </RadioGroup>
+           </LinearLayout>
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="vertical"
+               android:layout_marginTop="10dp"
+               android:background="@color/white">
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:padding="10dp"
+                   android:textSize="@dimen/dimens_15sp"
+                   android:textColor="@color/color_mid"
+                   android:text="储蓄金额"/>
+
+               <EditText
+                   android:id="@+id/et_money"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:padding="10dp"
+                   android:hint="充值越多赠送越多"
+                   android:textSize="@dimen/dimens_15sp"
+                   android:textColor="@color/color_mid"
+                   android:textColorHint="@color/color_mid"
+                   android:background="@null"
+                   android:gravity="center_vertical"
+                   android:drawableLeft="@mipmap/ic_launcher"
+                   android:drawablePadding="10dp"
+                   android:inputType="number"/>
+           </LinearLayout>
+
+           <TextView
+               android:id="@+id/tv_chongzhi"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:background="@drawable/button_radius_tianchong_style"
+               android:layout_margin="15dp"
+               android:padding="10dp"
+               android:gravity="center"
+               android:text="确认充值"
+               android:textColor="@color/white"
+               android:textSize="@dimen/dimens_16sp"
+               />
+
+           <LinearLayout
+               android:id="@+id/lin_activity"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_marginTop="10dp"
+               android:orientation="vertical">
+
+           </LinearLayout>
+       </LinearLayout>
+   </ScrollView>
+</LinearLayout>

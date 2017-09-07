@@ -17,6 +17,7 @@ import java.util.Set;
 
 
 import dfy.networklibrary.App;
+import dfy.networklibrary.base.BaseView;
 import dfy.networklibrary.loadingdialog.view.LoadingDialog;
 
 /**
@@ -46,6 +47,10 @@ public class BaseRequest<T extends BaseBean> {
     private boolean intercept_back_event = false;//是否拦截返回键
     private int repeatTime = 0;
 
+    //网络请求失败
+    private LoadingFailed mLoadingFailed;
+
+
     public BaseRequest() {
         mGson = new Gson();
         mLoadingDialog = new LoadingDialog(App.getActivityManager().currentActivity());
@@ -70,6 +75,11 @@ public class BaseRequest<T extends BaseBean> {
      */
     public BaseRequest addHttpParams(HashMap<String, String> httpParams) {
         this.httpParams = httpParams;
+        return this;
+    }
+
+    public BaseRequest setLoadingFailed(LoadingFailed loadingFailed) {
+        mLoadingFailed = loadingFailed;
         return this;
     }
 
@@ -124,13 +134,14 @@ public class BaseRequest<T extends BaseBean> {
 
     public void netGetRequest() {
         if (!NetworkUtils.isConnected()) {
-            mLoadingDialog
-                    .setInterceptBack(intercept_back_event)
-                    .setLoadSpeed(speed)
-                    .closeSuccessAnim()
-                    .setRepeatCount(repeatTime)
-                    .show();
-            mLoadingDialog.loadNetFailed();
+//            mLoadingDialog
+//                    .setInterceptBack(intercept_back_event)
+//                    .setLoadSpeed(speed)
+//                    .closeSuccessAnim()
+//                    .setRepeatCount(repeatTime)
+//                    .show();
+//            mLoadingDialog.loadNetFailed();
+            mLoadingFailed.loadFailed();
             return;
         }
         printURL();
@@ -200,6 +211,7 @@ public class BaseRequest<T extends BaseBean> {
                         } else {//解析失败
                             if (isJsonException) {
                                 if (mLoadingDialog != null) {
+                                    mLoadingFailed.loadFailed();
                                     mLoadingDialog.loadJsonFailed();
                                 }
                             }
@@ -286,6 +298,7 @@ public class BaseRequest<T extends BaseBean> {
                         } else {//解析失败
                             if (isJsonException) {
                                 if (mLoadingDialog != null) {
+                                    mLoadingFailed.loadFailed();
                                     mLoadingDialog.loadJsonFailed();
                                 }
                             }
@@ -297,7 +310,6 @@ public class BaseRequest<T extends BaseBean> {
 
     /**
      * 返回数据
-     *
      * @param <Y>
      */
     public interface NetRequestSuccess<Y extends BaseBean> {
@@ -307,6 +319,15 @@ public class BaseRequest<T extends BaseBean> {
          */
         void needResultCode(Y y);
     }
+
+    /**
+     * 加载失败，包括数据解析，网络请求，服务器等错误
+     */
+    public interface LoadingFailed{
+
+        void loadFailed();
+    }
+
 
     public interface NetRequestData<T> {
         /**
