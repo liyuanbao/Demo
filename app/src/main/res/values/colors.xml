@@ -17,5 +17,5 @@
     <color name="color_mid">#666</color>
     <color name="color_min">#333</color>
     <color name="color_cicle">#ddd</color>
-
+    <color name="color_lin">#bbb</color>
 </resources>

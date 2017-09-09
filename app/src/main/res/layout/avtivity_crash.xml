@@ -1,15 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <dfy.demo.widget.ToolTitle
-
-        android:id="@+id/toollbar"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_max"
+            android:orientation="vertical">
 
-    </dfy.demo.widget.ToolTitle>
+            <dfy.demo.widget.ToolTitle
+                android:id="@+id/toollbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </dfy.demo.widget.ToolTitle>
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/tv_money"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="10000"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimens_tool_title"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="总资产(元)"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimens_18sp"
+                />
+        </LinearLayout>
+        <dfy.demo.widget.CrashItemView
+            android:id="@+id/civ_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></dfy.demo.widget.CrashItemView>
+
+
+        <TextView
+            android:id="@+id/tv_chuzhi"
+            android:text="储值"
+            style="@style/button_mp_style"
+            android:layout_marginTop="30dp"
+            />
+
+        <TextView
+            android:id="@+id/tv_plan_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_mid"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:textSize="@dimen/dimens_16sp"
+            android:text="储值计划说明书"/>
+        <TextView
+            android:id="@+id/tv_plan_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_mid"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:textSize="@dimen/dimens_15sp"
+            android:text="储值计划说明书"/>
+
+    </LinearLayout>
+</ScrollView>

@@ -56,8 +56,11 @@
 
         <activity android:name=".product.CrashActivity"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".product.Main3Activity">
-        </activity>
+
+        <activity android:name=".product.XiaoFeiDetailActivity"
+                  android:screenOrientation="portrait"/>
+
+
     </application>
 
 </manifest>

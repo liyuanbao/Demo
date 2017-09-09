@@ -50,7 +50,7 @@ public class MainActivity extends BaseDemoActivity implements HomeView {
 
     @Override
     public boolean isNetLoading() {
-        return true;
+        return false;
     }
 
     @Override
