@@ -74,12 +74,8 @@ public class CarDetailAcitivity extends BaseDemoActivity {
         mTvBm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mTvBm.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        startActivity(new Intent(mContext,DateChoseActivity.class));
-                    }
-                });
+                startActivity(new Intent(mContext, DateChoseActivity.class));
+
             }
         });
     }

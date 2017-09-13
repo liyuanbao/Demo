@@ -50,10 +50,11 @@ public class XiaoFeiDetailActivity extends BaseDemoActivity {
     RecyclerViewEmptyView mRyItem;
     @BindView(R.id.coor)
     CoordinatorLayout mCoor;
-    @BindView(R.id.refrsh)
+    @BindView(R.id.refresh)
     SmartRefreshLayout mRefrsh;
 
     private ChuZhiAdapter mChuZhiAdapter;
+    private int page=1;
 
 
     @Override
@@ -77,7 +78,7 @@ public class XiaoFeiDetailActivity extends BaseDemoActivity {
         mChuZhiAdapter = new ChuZhiAdapter(R.layout.adapter_chuzhidetal, mList);
         mRyItem.addItemDecoration(new DividerItemDecoration(mContext,DividerItemDecoration.VERTICAL));
         mRyItem.setAdapter(mChuZhiAdapter);
-
+        mChuZhiAdapter.setEmptyView(R.layout.su_view_empty);
         //adapter条目点击监听
         mChuZhiAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
@@ -85,6 +86,7 @@ public class XiaoFeiDetailActivity extends BaseDemoActivity {
 
             }
         });
+        initRefresh();
 
     }
 
@@ -92,13 +94,13 @@ public class XiaoFeiDetailActivity extends BaseDemoActivity {
         mRefrsh.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {
-
+                page=1;
             }
         });
         mRefrsh.setOnLoadmoreListener(new OnLoadmoreListener() {
             @Override
             public void onLoadmore(RefreshLayout refreshlayout) {
-
+                page++;
             }
         });
     }

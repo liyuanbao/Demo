@@ -59,6 +59,10 @@
 
         <activity android:name=".product.XiaoFeiDetailActivity"
                   android:screenOrientation="portrait"/>
+        <activity android:name=".product.TiXianActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".product.UpdatePassActivity"
+                  android:screenOrientation="portrait"/>
 
 
     </application>

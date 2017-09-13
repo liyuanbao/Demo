@@ -62,5 +62,12 @@ public class CrashActivity extends BaseDemoActivity {
                 startActivity(new Intent(mContext,XiaoFeiDetailActivity.class));
             }
         });
+        //条目
+        mCivItem.setClickTwoListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(mContext,TiXianActivity.class));
+            }
+        });
     }
 }
