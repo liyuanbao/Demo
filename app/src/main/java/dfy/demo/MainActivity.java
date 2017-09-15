@@ -25,6 +25,7 @@ import dfy.demo.presenter.homepresenter;
 import dfy.demo.product.CarItemActiviy;
 import dfy.demo.product.ChuZhiActivity;
 import dfy.demo.test.ARShowActivity;
+import dfy.demo.widget.BaseDilog;
 import dfy.networklibrary.base.BasePresenter;
 import dfy.networklibrary.base.BaseView;
 import dfy.networklibrary.net.BaseBean;
@@ -136,6 +137,9 @@ public class MainActivity extends BaseDemoActivity implements HomeView {
     }
 
     private void myDialog() {
+        BaseDilog.Builder builder = new BaseDilog.Builder(mContext);
+        builder.setMsg("ddd")
+                .show();
     }
 
     private void popupwindow() {
