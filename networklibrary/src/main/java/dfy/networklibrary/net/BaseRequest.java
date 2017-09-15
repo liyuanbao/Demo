@@ -176,9 +176,9 @@ public class BaseRequest<T extends BaseBean> {
                     public void onFinish() {
                         super.onFinish();
                         //加载成功
-                        if (isLoading) {
-                            mLoadingDialog.loadSuccess();
-                        }
+//                        if (isLoading) {
+//                            mLoadingDialog.loadSuccess();
+//                        }
                     }
 
                     @Override
@@ -189,7 +189,8 @@ public class BaseRequest<T extends BaseBean> {
                             mLoadingFailed.loadFailed();
                         }else {
                             if (isLoading) {
-                                mLoadingDialog.loadFailed();
+                                System.out.println("执行失败");
+                                mLoadingDialog.loadRequestFailed();
                             }
                         }
                     }
@@ -274,16 +275,16 @@ public class BaseRequest<T extends BaseBean> {
                     public void onFinish() {
                         super.onFinish();
                         //加载成功
-                        if (isLoading) {
-                            mLoadingDialog.loadSuccess();
-                        }
+//                        if (isLoading) {
+//                            mLoadingDialog.loadSuccess();
+//                        }
                     }
 
                     @Override
                     public void onError(Response<String> response) {
                         super.onError(response);
                         if (isLoading) {
-                            mLoadingDialog.loadFailed();
+                            mLoadingDialog.loadRequestFailed();
                         }
                     }
                     @Override

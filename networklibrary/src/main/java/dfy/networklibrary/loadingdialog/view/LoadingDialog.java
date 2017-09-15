@@ -267,6 +267,14 @@ public class LoadingDialog implements FinishDrawListener {
         loadingText.setText("数据解析失败!");
     }
 
+    public void loadRequestFailed() {
+        mLoadingView.stopAnim();
+        hideAll();
+        mFailedView.setDrawDynamic(openFailedAnim);
+        mFailedView.setVisibility(View.VISIBLE);
+        loadingText.setText("请求失败!");
+    }
+
     /**
      * 关闭动态绘制
      */
