@@ -46,7 +46,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"></dfy.demo.widget.CrashItemView>
 
-
         <TextView
             android:id="@+id/tv_chuzhi"
             android:text="储值"

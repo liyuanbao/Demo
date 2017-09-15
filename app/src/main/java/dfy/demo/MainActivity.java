@@ -1,18 +1,12 @@
 package dfy.demo;
 
-import android.app.AlertDialog;
 import android.content.Intent;
-import android.content.MutableContextWrapper;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 
 import com.flyco.dialog.listener.OnBtnClickL;
 import com.flyco.dialog.listener.OnOperItemClickL;
@@ -20,13 +14,21 @@ import com.flyco.dialog.widget.ActionSheetDialog;
 import com.flyco.dialog.widget.NormalDialog;
 import com.flyco.dialog.widget.popup.BubblePopup;
 
+import java.util.HashMap;
+import java.util.List;
+
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import dfy.demo.bean.DetailBean;
 import dfy.demo.presenter.HomeView;
 import dfy.demo.presenter.homepresenter;
 import dfy.demo.product.CarItemActiviy;
 import dfy.demo.product.ChuZhiActivity;
-import dfy.demo.widget.BaseDilog;
+import dfy.demo.test.ARShowActivity;
+import dfy.networklibrary.base.BasePresenter;
+import dfy.networklibrary.base.BaseView;
+import dfy.networklibrary.net.BaseBean;
+import dfy.networklibrary.net.ConstantNet;
 
 import static dfy.demo.ApplictionDemo.getActivityManager;
 
@@ -43,8 +45,10 @@ public class MainActivity extends BaseDemoActivity implements HomeView {
     LinearLayout mLin;
     @BindView(R.id.tv_context)
     TextView mTvContext;
+    @BindView(R.id.test)
+    TextView mTest;
 
-    private homepresenter mHomepresenter;
+    private homepresenter<BaseView, BaseBean<List<DetailBean.DataBean>>> mHomepresenter;
 
 
     @Override
@@ -75,8 +79,22 @@ public class MainActivity extends BaseDemoActivity implements HomeView {
 
     @Override
     public void initData() {
-        mHomepresenter = new homepresenter(this);
-        mHomepresenter.homeIndex();
+
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("page", "1");
+        hashMap.put("areaId", "");
+        hashMap.put("dataId", "");
+        hashMap.put("year", "");
+        new BasePresenter<HomeView, DetailBean>()
+                .setURL(ConstantNet.LAW_DETAIL)
+                .setHashMap(hashMap)
+                .setClazz(DetailBean.class)
+                .setSuccessResponse(new BasePresenter.SuccessResponse<DetailBean>() {
+                    @Override
+                    public void success(DetailBean baseBean) {
+                        getIndex(baseBean);
+                    }
+                }).CommonNetRequest();
     }
 
 
@@ -99,55 +117,28 @@ public class MainActivity extends BaseDemoActivity implements HomeView {
         mBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                startActivity(new Intent(mContext, ChuZhiActivity.class));
-               new BaseDilog.Builder(mContext)
-                       .setMsgNotification()
-                       .setMsg("YYY")
-                       .setCancelListener(new View.OnClickListener() {
-                           @Override
-                           public void onClick(View view) {
-                               toastLong("xxx");
-                           }
-                       })
-                       .setOkListener(new View.OnClickListener() {
-                           @Override
-                           public void onClick(View view) {
-                               toastLong("yyyyyy");
-                           }
-                       })
-                       .show();
+                startActivity(new Intent(mContext, ChuZhiActivity.class));
+//
+            }
+        });
 
-//                final BaseDilog baseDilog = new BaseDilog(mContext);
-//                baseDilog.setContentView(R.layout.pouwidow);
-//                baseDilog.show();
-//
-//                Window window = baseDilog.getWindow();
-//                WindowManager.LayoutParams attributes = window.getAttributes();
-//                attributes.width=WindowManager.LayoutParams.MATCH_PARENT;
-//                attributes.height=WindowManager.LayoutParams.WRAP_CONTENT;
-//
-//                attributes.gravity=Gravity.BOTTOM;
-//                window.setAttributes(attributes);
-//                baseDilog.setCancelable(false);
-//                Button bt = baseDilog.findViewById(R.id.no);
-//
-//
-//                bt.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        toastLong("ddssd");
-//                        baseDilog.dismiss();
-//                    }
-//                });
+        mTest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(mContext, ARShowActivity.class));
             }
         });
     }
 
-    private void myDialog(){
-        new BaseDilog(mContext);
+    @Override
+    public void entryItem(DetailBean baseBean) {
+
     }
 
-    private void popupwindow(){
+    private void myDialog() {
+    }
+
+    private void popupwindow() {
         View inflate = View.inflate(mContext, R.layout.rz_liucheng_layout, null);
         new BubblePopup(mContext, inflate)
                 .anchorView(mBut)
@@ -166,7 +157,7 @@ public class MainActivity extends BaseDemoActivity implements HomeView {
     }
 
 
-    private void itemDilog(){
+    private void itemDilog() {
         final String[] stringItems = {"接收消息并提醒", "接收消息但不提醒", "收进群助手且不提醒", "屏蔽群消息"};
         final ActionSheetDialog dialog = new ActionSheetDialog(mContext, stringItems, null);
         dialog.title("选择群消息提醒方式\r\n(该群在电脑的设置:接收消息并提醒)")//

@@ -21,17 +21,29 @@ import dfy.demo.R;
 
 public class BaseDilog {
 
-    private Context mContext;
+    public String title;
+    public String msg;
+    public String cancel;
+    public String ok;
 
-    public static String title;
-    public BaseDilog(Context mContext){
-        this.mContext=mContext;
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
 
+    public void setCancel(String cancel) {
+        this.cancel = cancel;
+    }
+
+    public void setOk(String ok) {
+        this.ok = ok;
+    }
 
     public static class Builder extends Dialog {
-
         private Context mContext;
         private Button mYes;
         private Button mNo;
@@ -140,9 +152,6 @@ public class BaseDilog {
             return this;
         }
 
-
-
-
         /**
          * 设置在底部占满全屏弹出
          * @return
@@ -156,7 +165,12 @@ public class BaseDilog {
             window.setAttributes(attributes);
             return this;
         }
+
+        public BaseDilog.Builder setAnimation(){
+            Window window = this.getWindow();
+            window.setWindowAnimations(R.style.mystyle);
+            return this;
+        }
+
     }
-
-
 }
