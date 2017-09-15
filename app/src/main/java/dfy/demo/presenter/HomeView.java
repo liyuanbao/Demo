@@ -7,9 +7,10 @@ import dfy.demo.bean.DetailBean;
  * Created by Admin on 2017/8/31.
  */
 
-public interface HomeView extends BaseView {
+public interface HomeView extends BaseView{
 
     void getIndex(DetailBean homeBean);
 
     void fail();
+    void entryItem(DetailBean baseBean);
 }

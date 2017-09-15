@@ -2,11 +2,13 @@ package dfy.networklibrary.base;
 
 import android.os.Bundle;
 
+import dfy.networklibrary.net.BaseBean;
+
 /**
  * Created by Admin on 2017/8/30.
  */
 
-public interface BaseView {
+public interface BaseView<B extends BaseBean> {
 
     void initView(Bundle savedInstanceState);
 
@@ -21,4 +23,8 @@ public interface BaseView {
     void netRequestOk();
 
     void netRequestFail();
+
+//    void entryItem(B baseBean);
+
+
 }

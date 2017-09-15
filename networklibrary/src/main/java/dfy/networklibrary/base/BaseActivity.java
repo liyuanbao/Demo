@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import dfy.networklibrary.App;
+import dfy.networklibrary.net.BaseBean;
 
 /**
  * Created by Admin on 2017/9/1.
@@ -72,5 +73,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     public void netRequestFail() {
 
     }
+
+    
 
 }
