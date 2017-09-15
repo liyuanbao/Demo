@@ -80,7 +80,6 @@ public class MainActivity extends BaseDemoActivity implements HomeView {
 
     @Override
     public void initData() {
-
         HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("page", "1");
         hashMap.put("areaId", "");
