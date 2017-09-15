@@ -53,15 +53,18 @@
         <activity
             android:name=".product.TelYanZhenActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".product.Main2Activity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
-        <activity android:name=".product.Main3Activity">
-        </activity>
+        <activity android:name=".product.CrashActivity"
+                  android:screenOrientation="portrait"/>
+
+        <activity android:name=".product.XiaoFeiDetailActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".product.TiXianActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".product.UpdatePassActivity"
+                  android:screenOrientation="portrait"/>
+
+
     </application>
 
 </manifest>

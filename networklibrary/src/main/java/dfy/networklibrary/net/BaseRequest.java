@@ -46,6 +46,7 @@ public class BaseRequest<T extends BaseBean> {
     LoadingDialog.Speed speed = LoadingDialog.Speed.SPEED_TWO;
     private boolean intercept_back_event = false;//是否拦截返回键
     private int repeatTime = 0;
+    private boolean isFirstLoading=false;
 
     //网络请求失败
     private LoadingFailed mLoadingFailed;
@@ -132,16 +133,26 @@ public class BaseRequest<T extends BaseBean> {
         return this;
     }
 
+
+    public BaseRequest setFirstLoading(boolean firstLoading) {
+        isFirstLoading = firstLoading;
+        return this;
+    }
+
     public void netGetRequest() {
         if (!NetworkUtils.isConnected()) {
-//            mLoadingDialog
-//                    .setInterceptBack(intercept_back_event)
-//                    .setLoadSpeed(speed)
-//                    .closeSuccessAnim()
-//                    .setRepeatCount(repeatTime)
-//                    .show();
-//            mLoadingDialog.loadNetFailed();
-            mLoadingFailed.loadFailed();
+            //如果进入某个页面就加载网络
+            if (isFirstLoading){
+                mLoadingFailed.loadFailed();
+            }else {
+                mLoadingDialog
+                        .setInterceptBack(intercept_back_event)
+                        .setLoadSpeed(speed)
+                        .closeSuccessAnim()
+                        .setRepeatCount(repeatTime)
+                        .show();
+                mLoadingDialog.loadNetFailed();
+            }
             return;
         }
         printURL();
@@ -173,8 +184,13 @@ public class BaseRequest<T extends BaseBean> {
                     @Override
                     public void onError(Response<String> response) {
                         super.onError(response);
-                        if (isLoading) {
-                            mLoadingDialog.loadFailed();
+
+                        if (isFirstLoading){
+                            mLoadingFailed.loadFailed();
+                        }else {
+                            if (isLoading) {
+                                mLoadingDialog.loadFailed();
+                            }
                         }
                     }
 

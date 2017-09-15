@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/background"
+              android:orientation="vertical">
+
+    <dfy.demo.widget.ToolTitle
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_tool_bg_red">
+    </dfy.demo.widget.ToolTitle>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:divider="@drawable/divider_linear"
+        android:orientation="vertical"
+        android:showDividers="middle">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/text_wrap_dimans16_style"
+                android:text="姓名:"
+                />
+
+            <EditText
+                android:id="@+id/et_name"
+                style="@style/et_martch_dimans16_style"
+                android:hint="姓名"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/text_wrap_dimans16_style"
+                android:text="卡号:"
+                />
+
+            <EditText
+                android:id="@+id/et_number"
+                style="@style/et_martch_dimans16_style"
+                android:hint="卡号"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/text_wrap_dimans16_style"
+                android:text="开户行:"
+                />
+
+            <EditText
+                android:id="@+id/et_blank"
+                style="@style/et_martch_dimans16_style"
+                android:hint="开户行"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/text_wrap_dimans16_style"
+                android:text="电话:"
+                />
+
+            <EditText
+                android:id="@+id/et_tel"
+                style="@style/et_martch_dimans16_style"
+                android:hint="电话"
+                />
+        </LinearLayout>
+
+        <TextView
+            style="@style/text_wrap_dimans16_style"
+            android:text="提现金额"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/text_wrap_dimans16_style"
+                android:text="￥"/>
+
+            <EditText
+                android:id="@+id/et_money"
+                style="@style/et_martch_dimans16_style"
+                android:hint="可提现金额为0.0元"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        style="@style/button_mp_style"
+        android:text="确认提现"/>
+
+</LinearLayout>

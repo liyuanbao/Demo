@@ -41,7 +41,7 @@ public  class CarItemActiviy extends BaseDemoActivity {
         mRcItemShow.setEmptyView(mEmpty);
         mCarItemAdapter=new CarItemAdapter(this);
         mRcItemShow.setAdapter(mCarItemAdapter);
-        mRcItemShow.addItemDecoration(new RecyclerViewDivider(mContext,RecyclerViewDivider.VERTICAL_LIST));
+        mRcItemShow.addItemDecoration(new RecyclerViewDivider(mContext,LinearLayoutManager.VERTICAL));
         mCarItemAdapter.setOnClickListener(new OnClickListener() {
             @Override
             public void OnClickListener(View view, int position) {

@@ -2,6 +2,7 @@ package dfy.demo.product;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -61,7 +62,7 @@ public class TaoCanChoseActivity extends BaseDemoActivity {
      */
     private void initRecyclerView(){
         mReItem.setLayoutManager(new LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false));
-        mReItem.addItemDecoration(new RecyclerViewDivider(mContext,RecyclerViewDivider.VERTICAL_LIST));
+        mReItem.addItemDecoration(new DividerItemDecoration(mContext,DividerItemDecoration.VERTICAL));
         mKuanAdapter=new TaoCanKuanAdapter(mContext);
         mReItem.setAdapter(mKuanAdapter);
     }
