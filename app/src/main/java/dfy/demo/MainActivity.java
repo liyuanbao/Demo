@@ -139,6 +139,7 @@ public class MainActivity extends BaseDemoActivity implements HomeView {
     private void myDialog() {
         BaseDilog.Builder builder = new BaseDilog.Builder(mContext);
         builder.setMsg("ddd")
+                .setTitle("sss")
                 .show();
     }
 
