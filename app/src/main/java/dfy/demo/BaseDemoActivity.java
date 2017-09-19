@@ -44,6 +44,7 @@ public abstract class BaseDemoActivity<T> extends BaseActivity {
         linearLayout=new LinearLayout(mContext);
         linearLayout.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT));
         setContentView(linearLayout);
+
         App.getActivityManager().pushActivity(this);
 
 
@@ -141,6 +142,7 @@ public abstract class BaseDemoActivity<T> extends BaseActivity {
         if (mBind!=null){
             mBind.unbind();
         }
+        App.getActivityManager().popActivity(this);
     }
 
 
@@ -154,4 +156,5 @@ public abstract class BaseDemoActivity<T> extends BaseActivity {
 
         void onRetryConnction();
     }
+
 }

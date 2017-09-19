@@ -11,15 +11,16 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import dfy.demo.BaseFragment;
 import dfy.demo.R;
 import dfy.demo.product.CrashActivity;
-import dfy.networklibrary.widget.FragmentLazyLoad;
+import dfy.demo.FragmentLazyLoad;
 
 /**
  * Created by Admin on 2017/9/7.
  */
 
-public class YanZhenChuXuFragment extends FragmentLazyLoad {
+public class YanZhenChuXuFragment extends BaseFragment {
 
     @BindView(R.id.line_chuxu)
     LinearLayout mLineChuxu;
@@ -54,19 +55,5 @@ public class YanZhenChuXuFragment extends FragmentLazyLoad {
                 startActivity(new Intent(getContext(), CrashActivity.class));
             }
         });
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        unbinder = ButterKnife.bind(this, rootView);
-        return rootView;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
     }
 }

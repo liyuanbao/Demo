@@ -2,6 +2,9 @@ package dfy.demo;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.Gravity;
 import android.view.View;
@@ -15,13 +18,13 @@ import com.flyco.dialog.widget.ActionSheetDialog;
 import com.flyco.dialog.widget.NormalDialog;
 import com.flyco.dialog.widget.popup.BubblePopup;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import dfy.demo.bean.DetailBean;
-import dfy.demo.bean.HomeBean;
 import dfy.demo.presenter.HomeView;
 import dfy.demo.presenter.homepresenter;
 import dfy.demo.product.CarItemActiviy;
@@ -52,6 +55,8 @@ public class MainActivity extends BaseDemoActivity<DetailBean> implements HomeVi
     TextView mTest;
     @BindView(R.id.refresh)
     SwipeRefreshLayout mRefresh;
+    @BindView(R.id.vp)
+    ViewPager mVp;
 
     private homepresenter<BaseView, BaseBean<List<DetailBean.DataBean>>> mHomepresenter;
 
@@ -76,8 +81,25 @@ public class MainActivity extends BaseDemoActivity<DetailBean> implements HomeVi
                 getData();
             }
         });
-    }
 
+
+        final ArrayList<Fragment> mFragment=new ArrayList<>();
+
+        mFragment.add(new TestFragment());
+        mFragment.add(new TestFragment());
+        mFragment.add(new TestFragment());
+        mVp.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
+            @Override
+            public Fragment getItem(int position) {
+                return mFragment.get(position);
+            }
+
+            @Override
+            public int getCount() {
+                return mFragment!=null?mFragment.size():0;
+            }
+        });
+    }
 
 
     private void getData() {
@@ -120,7 +142,7 @@ public class MainActivity extends BaseDemoActivity<DetailBean> implements HomeVi
 
     @Override
     public void initData() {
-        
+
     }
 
 
@@ -150,7 +172,6 @@ public class MainActivity extends BaseDemoActivity<DetailBean> implements HomeVi
             }
         });
     }
-
 
 
     @Override
@@ -236,5 +257,12 @@ public class MainActivity extends BaseDemoActivity<DetailBean> implements HomeVi
             }
         });
 
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
     }
 }

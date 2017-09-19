@@ -144,7 +144,7 @@ public class BaseRequest<T extends BaseBean> {
             //如果进入某个页面就加载网络
             if (isFirstLoading) {
                 mLoadingFailed.loadFailed();
-            } else {
+            } else if (isLoading) {
                 mLoadingDialog
                         .setInterceptBack(intercept_back_event)
                         .setLoadSpeed(speed)
@@ -187,11 +187,9 @@ public class BaseRequest<T extends BaseBean> {
 
                         if (isFirstLoading) {
                             mLoadingFailed.loadFailed();
-                        } else {
-                            if (isLoading) {
-                                System.out.println("执行失败");
-                                mLoadingDialog.loadRequestFailed();
-                            }
+                        } else if (isLoading) {
+                            System.out.println("执行失败");
+                            mLoadingDialog.loadRequestFailed();
                         }
                     }
 
@@ -232,7 +230,7 @@ public class BaseRequest<T extends BaseBean> {
                             if (isJsonException) {
                                 if (mLoadingDialog != null) {
                                     mLoadingFailed.loadFailed();
-                                    mLoadingDialog.loadJsonFailed();
+//                                    mLoadingDialog.loadJsonFailed();
                                 }
                             }
                         }
@@ -249,7 +247,7 @@ public class BaseRequest<T extends BaseBean> {
             //如果进入某个页面就加载网络
             if (isFirstLoading) {
                 mLoadingFailed.loadFailed();
-            } else {
+            } else if (isLoading) {
                 mLoadingDialog
                         .setInterceptBack(intercept_back_event)
                         .setLoadSpeed(speed)
@@ -293,11 +291,9 @@ public class BaseRequest<T extends BaseBean> {
                         super.onError(response);
                         if (isFirstLoading) {
                             mLoadingFailed.loadFailed();
-                        } else {
-                            if (isLoading) {
-                                System.out.println("执行失败");
-                                mLoadingDialog.loadRequestFailed();
-                            }
+                        } else if (isLoading) {
+                            System.out.println("执行失败");
+                            mLoadingDialog.loadRequestFailed();
                         }
                     }
 
@@ -337,7 +333,7 @@ public class BaseRequest<T extends BaseBean> {
                             if (isJsonException) {
                                 if (mLoadingDialog != null) {
                                     mLoadingFailed.loadFailed();
-                                    mLoadingDialog.loadJsonFailed();
+//                                    mLoadingDialog.loadJsonFailed();
                                 }
                             }
                         }

@@ -2,14 +2,15 @@ package dfy.demo.product.fragment;
 
 import android.os.Bundle;
 
+import dfy.demo.BaseFragment;
 import dfy.demo.R;
-import dfy.networklibrary.widget.FragmentLazyLoad;
+import dfy.demo.FragmentLazyLoad;
 
 /**
  * Created by Admin on 2017/9/7.
  */
 
-public class YanZhenPassFragment extends FragmentLazyLoad {
+public class YanZhenPassFragment extends BaseFragment {
 
     public static YanZhenPassFragment newInstance(){
         return new YanZhenPassFragment();

@@ -1,4 +1,4 @@
-package dfy.networklibrary.widget;
+package dfy.demo;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import butterknife.ButterKnife;
 import dfy.networklibrary.App;
 import dfy.networklibrary.base.BaseView;
 
@@ -39,6 +40,7 @@ public abstract class FragmentLazyLoad extends Fragment implements BaseView{
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(setInflaterView(), container, false);
+        ButterKnife.bind(this,view);
         isInit = true;
         mContext=getContext();
         /**初始化的时候去加载数据**/
