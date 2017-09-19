@@ -63,8 +63,8 @@ public class BasePresenter<T extends BaseView, B extends BaseBean> {
                 .setURL(URL)
                 .addHttpParams(mHashMap)
                 .setDataType(clazz)
-                .setIsLoading(false)
-                .setFirstLoading(true)
+                .setIsLoading(true)
+                .setFirstLoading(false)
                 .requestCodeSuccess(new BaseRequest.NetRequestSuccess<B>() {
                     @Override
                     public void needResultCode(B commonBean) {
@@ -77,7 +77,7 @@ public class BasePresenter<T extends BaseView, B extends BaseBean> {
                         mLoadingFaild.loadFailed();
                     }
                 })
-                .netPostRequest();
+                .netGetRequest();
 
     }
 

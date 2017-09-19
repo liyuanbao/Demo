@@ -2,8 +2,6 @@ package dfy.demo;
 
 import android.os.Bundle;
 
-import dfy.networklibrary.widget.FragmentLazyLoad;
-
 /**
  * Created by Admin on 2017/9/1.
  */
