@@ -35,6 +35,5 @@ public class OrderItemAdapter extends BaseQuickAdapter<BaseBean,BaseViewHolder> 
         helper.addOnClickListener(R.id.tv_cancel)
                 .addOnClickListener(R.id.tv_sug)
                 .addOnClickListener(R.id.tv_pay);
-
     }
 }

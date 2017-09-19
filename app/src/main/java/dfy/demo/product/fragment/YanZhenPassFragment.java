@@ -26,6 +26,11 @@ public class YanZhenPassFragment extends FragmentLazyLoad {
     }
 
     @Override
+    public void loadingErrorView() {
+
+    }
+
+    @Override
     protected void lazyLoad() {
 
     }

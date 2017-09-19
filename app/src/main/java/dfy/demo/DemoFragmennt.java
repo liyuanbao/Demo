@@ -20,6 +20,11 @@ public class DemoFragmennt extends FragmentLazyLoad {
 
     }
 
+    @Override
+    public void loadingErrorView() {
+
+    }
+
 
     @Override
     protected void lazyLoad() {

@@ -27,4 +27,7 @@ public interface BaseView<B extends BaseBean> {
 //    void entryItem(B baseBean);
 
 
+    void loadingErrorView();
+
+
 }

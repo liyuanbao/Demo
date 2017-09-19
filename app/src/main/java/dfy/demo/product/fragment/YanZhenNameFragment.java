@@ -25,6 +25,11 @@ public class YanZhenNameFragment extends FragmentLazyLoad {
     }
 
     @Override
+    public void loadingErrorView() {
+
+    }
+
+    @Override
     protected void lazyLoad() {
 
     }
