@@ -20,7 +20,7 @@ public class ConstantNet {
 
     public static final String LAW_HOME=BASE_URL+"home/Index/index";
 
-    public static final String LAW_DETAIL="http://law.east-profit.com/app.php/home/users/law_indx";
+    public static final String LAW_DETAIL="http://law.east-profit.com/app.php/home/users/law_index";
 
 
 }

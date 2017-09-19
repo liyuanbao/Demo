@@ -42,6 +42,11 @@ public class YanZhenChuXuFragment extends FragmentLazyLoad {
     }
 
     @Override
+    public void loadingErrorView() {
+
+    }
+
+    @Override
     protected void lazyLoad() {
         mTvYingdao.setOnClickListener(new View.OnClickListener() {
             @Override

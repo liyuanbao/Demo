@@ -8,8 +8,10 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -26,6 +28,7 @@ import butterknife.ButterKnife;
 import dfy.demo.BaseDemoActivity;
 import dfy.demo.R;
 import dfy.demo.product.adapter.ChuZhiAdapter;
+import dfy.demo.utils.LogUtils;
 import dfy.demo.widget.CrashItemView;
 import dfy.demo.widget.RecyclerViewDivider;
 import dfy.demo.widget.ToolTitle;
@@ -57,7 +60,11 @@ public class XiaoFeiDetailActivity extends BaseDemoActivity {
     SmartRefreshLayout mRefresh;
     private ChuZhiAdapter mChuZhiAdapter;
     private int page = 1;
+    RecyclerViewDivider mRecyclerViewDivider;
 
+
+    List<BaseBean> mList;
+    View inflate;
 
     @Override
     protected int getInflaterView() {
@@ -77,16 +84,20 @@ public class XiaoFeiDetailActivity extends BaseDemoActivity {
 
         //给页面设置工具栏
         mRyItem.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
-        List<BaseBean> mList = new ArrayList<>();
+        inflate = getLayoutInflater().inflate(R.layout.su_view_empty, (ViewGroup) mRyItem.getParent(),false);
+        mList = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             BaseBean baseBean = new BaseBean();
+            baseBean.setCode(i);
             mList.add(baseBean);
         }
         mChuZhiAdapter = new ChuZhiAdapter(R.layout.adapter_chuzhidetal, mList);
-        mRyItem.addItemDecoration(new RecyclerViewDivider(mContext, DividerItemDecoration.HORIZONTAL,R.drawable.divider_recycler));
-        mRyItem.setAdapter(mChuZhiAdapter);
-        View inflate = LayoutInflater.from(mContext).inflate(R.layout.su_view_empty, null);
         mChuZhiAdapter.setEmptyView(inflate);
+        mChuZhiAdapter.openLoadAnimation();
+        mRecyclerViewDivider= new RecyclerViewDivider(mContext, DividerItemDecoration.HORIZONTAL, R.drawable.divider_recycler);
+        mRyItem.addItemDecoration(mRecyclerViewDivider);
+        mRyItem.setAdapter(mChuZhiAdapter);
+
         //adapter条目点击监听
         mChuZhiAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
@@ -99,16 +110,23 @@ public class XiaoFeiDetailActivity extends BaseDemoActivity {
     }
 
     private void initRefresh() {
+
         mRefresh.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {
                 page = 1;
+                mChuZhiAdapter.setNewData(null);
+                mRyItem.removeItemDecoration(mRecyclerViewDivider);
+                mRefresh.finishRefresh();
+//                mChuZhiAdapter.setEnableLoadMore(true);
             }
         });
         mRefresh.setOnLoadmoreListener(new OnLoadmoreListener() {
             @Override
             public void onLoadmore(RefreshLayout refreshlayout) {
                 page++;
+                mChuZhiAdapter.addData(mList);
+                mRefresh.finishLoadmore();
             }
         });
     }

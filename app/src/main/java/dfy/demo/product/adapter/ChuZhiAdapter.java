@@ -29,7 +29,9 @@ public class ChuZhiAdapter extends BaseQuickAdapter<BaseBean,BaseViewHolder>{
 
     @Override
     protected void convert(BaseViewHolder helper, BaseBean item) {
-
+        helper.setText(R.id.tv_name,item.getCode()+"");
+        helper.setText(R.id.tv_money,"xxxx");
+        helper.setText(R.id.tv_data,"xxx");
     }
 }
 

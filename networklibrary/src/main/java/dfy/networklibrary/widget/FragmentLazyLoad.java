@@ -1,6 +1,7 @@
 package dfy.networklibrary.widget;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
@@ -10,8 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import dfy.networklibrary.App;
 import dfy.networklibrary.base.BaseView;
 
 
@@ -59,6 +62,13 @@ public abstract class FragmentLazyLoad extends Fragment implements BaseView{
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         isCanLoadData();
+    }
+
+    /**
+     * 加载错误页
+     */
+    public void loadingErrorView() {
+//        View inflate = LayoutInflater.from(mContext).inflate(R.layout.su_view_error_server, linearLayout, false);
     }
 
 

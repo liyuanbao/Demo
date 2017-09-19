@@ -76,12 +76,13 @@ public class OrderItemActivity extends BaseDemoActivity {
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {
 
+                mRefresh.finishRefresh();
             }
         });
         mRefresh.setOnLoadmoreListener(new OnLoadmoreListener() {
             @Override
             public void onLoadmore(RefreshLayout refreshlayout) {
-
+                mRefresh.finishLoadmore();
             }
         });
     }
@@ -92,11 +93,14 @@ public class OrderItemActivity extends BaseDemoActivity {
         mList.add(new BaseBean());
         mList.add(new BaseBean());
         mList.add(new BaseBean());
+        mList.add(new BaseBean());
+        mList.add(new BaseBean());
+        mList.add(new BaseBean());
         mRecy.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
 
         mRecy.addItemDecoration(new RecyclerViewDivider(mContext, LinearLayoutManager.HORIZONTAL, R.drawable.divider_recycler));
 
-        mItemAdapter = new OrderItemAdapter(0);
+        mItemAdapter = new OrderItemAdapter(R.layout.adapter_orderitem);
         mItemAdapter.setNewData(mList);
         View inflate = LayoutInflater.from(mContext).inflate(R.layout.su_view_empty, null, false);
         mItemAdapter.setEmptyView(inflate);
