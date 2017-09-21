@@ -165,6 +165,20 @@ public class BaseDilog {
             window.setAttributes(attributes);
             return this;
         }
+        /**
+         * 设置在全屏弹出
+         * @return
+         */
+        public BaseDilog.Builder setShowMatchLocation(){
+            Window window = this.getWindow();
+            WindowManager.LayoutParams attributes = window.getAttributes();
+            attributes.width=WindowManager.LayoutParams.MATCH_PARENT;
+            attributes.height=WindowManager.LayoutParams.MATCH_PARENT;
+            attributes.gravity= Gravity.BOTTOM;
+            window.setAttributes(attributes);
+            return this;
+        }
+
 
         public BaseDilog.Builder setAnimation(){
             Window window = this.getWindow();

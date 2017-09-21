@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:fitsSystemWindows="true"
+              android:orientation="vertical">
 
     <dfy.demo.widget.ToolTitle
         android:id="@+id/toolbar"
@@ -14,13 +15,13 @@
         android:id="@+id/tv_tel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/dimens_16sp"
-        android:textColor="@color/color_mid"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:layout_marginTop="20dp"
         android:gravity="center"
-        android:text="ssss"/>
+        android:text="ssss"
+        android:textColor="@color/color_mid"
+        android:textSize="@dimen/dimens_16sp"/>
 
 
     <LinearLayout
@@ -99,6 +100,7 @@
             android:background="@color/color_cicle"
             />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

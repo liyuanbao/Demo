@@ -13,6 +13,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.gyf.barlibrary.ImmersionBar;
+
 import java.util.List;
 
 import butterknife.ButterKnife;
@@ -45,8 +47,12 @@ public abstract class BaseDemoActivity<T> extends BaseActivity {
         linearLayout.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT));
         setContentView(linearLayout);
 
-        App.getActivityManager().pushActivity(this);
+        StatusBarUtils.StatusBarLightMode(this);
 
+        StatusBarUtils.StatusBarLightMode(this);
+        new SystemStatusManager(this).setTranslucentStatus(R.color.color_tool_bg_red);
+
+        App.getActivityManager().pushActivity(this);
 
         if (isNetLoading()) {
             linearLayout.removeAllViews();
@@ -122,6 +128,11 @@ public abstract class BaseDemoActivity<T> extends BaseActivity {
                }
             }
         });
+    }
+
+    @Override
+    public void loadFail() {
+
     }
 
     /**

@@ -30,4 +30,7 @@ public interface BaseView<B extends BaseBean> {
     void loadingErrorView();
 
 
+    void loadFail();
+
+
 }
