@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
               android:layout_width="match_parent"
+              android:layout_height="match_parent"
               android:fitsSystemWindows="true"
-              android:layout_height="match_parent">
+              android:orientation="vertical">
 
-
-    <TextView
-        android:id="@+id/tv_title"
+    <dfy.demo.widget.ToolTitle
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ddd"
-        android:gravity="center"/>
+        android:background="@color/color_tool_bg_red">
+    </dfy.demo.widget.ToolTitle>
 
-    <com.google.vr.sdk.widgets.pano.VrPanoramaView
-        android:id="@+id/vr_view"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recy"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-    </com.google.vr.sdk.widgets.pano.VrPanoramaView>
+    </android.support.v7.widget.RecyclerView>
 </LinearLayout>

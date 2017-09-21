@@ -34,6 +34,11 @@ public class TestFragment extends BaseFragment {
     }
 
     @Override
+    public void initView(Bundle savedInstanceState) {
+
+    }
+
+    @Override
     protected void lazyLoad() {
 
         mRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

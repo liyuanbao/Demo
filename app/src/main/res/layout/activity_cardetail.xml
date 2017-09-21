@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-    android:background="@color/background"
-    android:fitsSystemWindows="true"
-    android:clipToPadding="true">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/background"
+                android:clipToPadding="true"
+                android:fitsSystemWindows="true"
+                android:orientation="vertical">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/bottom">
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,15 +23,17 @@
                             android:layout_height="150dp"
                             android:orientation="vertical">
 
-                <dfy.demo.widget.ToolTitle
-                    android:id="@+id/toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"></dfy.demo.widget.ToolTitle>
+
                 <ImageView
                     android:id="@+id/iv_pic"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:src="@drawable/su_ic_empty"/>
+
+                <dfy.demo.widget.ToolTitle
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"></dfy.demo.widget.ToolTitle>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -58,6 +61,7 @@
                         android:padding="10dp"
                         android:paddingRight="10dp"
                         android:text="3600"
+                        android:visibility="gone"
                         android:textColor="@color/color_caritem_money"/>
                 </LinearLayout>
             </RelativeLayout>
@@ -65,8 +69,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@color/white">
+                android:background="@color/white"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/tv_address"
@@ -76,45 +80,36 @@
                     android:text="各地"
                     android:textColor="@color/color_mid"
                     android:textSize="@dimen/dimens_16sp"/>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal"
                     android:paddingBottom="10dp"
-                    android:gravity="center_vertical"
                     >
 
                     <TextView
-                        android:id="@+id/tv_comment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:drawableLeft="@mipmap/ic_launcher"
-                        android:drawablePadding="5dp"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="10dp"
-                        android:text="1"
-                        />
-
-                    <TextView
-                        android:id="@+id/tv_laud"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="10dp"
-                        android:drawableLeft="@mipmap/ic_launcher"
-                        android:text="1"
-                        android:gravity="center_vertical"
-                        android:drawablePadding="5dp"
-                        />
-
-                    <TextView
                         android:id="@+id/tv_money"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+                        android:gravity="center_vertical"
                         android:paddingLeft="10dp"
                         android:text="￥36000"
-                        android:gravity="end"
                         android:textColor="@color/color_caritem_money"
+                        android:textSize="@dimen/dimens_16sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_picedetail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:paddingLeft="10dp"
                         android:paddingRight="10dp"
+                        android:text="价格说明"
+                        android:textColor="@color/color_tool_bg_red"
                         android:textSize="@dimen/dimens_16sp"
                         />
                 </LinearLayout>
@@ -124,49 +119,114 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:background="@color/white">
+                android:background="@color/white"
+                android:orientation="vertical">
+
                 <TextView
-                    android:id="@+id/tv_xc"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:text="用户评价"
                     android:gravity="center"
-                    android:text="详细行程"
+                    android:textSize="@dimen/dimens_18sp"
                     android:padding="10dp"
-                    android:textSize="@dimen/dimens_16sp"
                     android:textColor="@color/color_mid"/>
+
+                <LinearLayout
+                    android:id="@+id/ln_xing"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ln_pj"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:layout_marginTop="0.5dp">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_pj"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
                 <TextView
-                    android:id="@+id/tv_jg"
-                    android:layout_width="0dp"
+                    android:id="@+id/tv_pj"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:textColor="@color/color_tool_bg_red"
+                    android:text="查看全部评价 >>"
                     android:gravity="center"
-                    android:text="价格明细"
-                    android:padding="10dp"
-                    android:textSize="@dimen/dimens_16sp"
-                    android:textColor="@color/color_mid"/>
+                    android:padding="10dp"/>
+            </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:layout_marginTop="0.5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                >
+
                 <TextView
-                    android:id="@+id/tv_yd"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="预定须知"
-                    android:padding="10dp"
+                    android:drawablePadding="5dp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="出发日期"
+                    android:textColor="@color/color_mid"
                     android:textSize="@dimen/dimens_16sp"
-                    android:textColor="@color/color_mid"/>
+                    />
+
+                <TextView
+                    android:id="@+id/tv_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="更多班期"
+                    android:textColor="@color/color_tool_bg_red"
+                    android:textSize="@dimen/dimens_16sp"
+                    />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_date"
+                    android:layout_marginTop="0.5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
             </LinearLayout>
 
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ln_webview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                android:background="@color/white">
+
+            </LinearLayout>
 
 
         </LinearLayout>
     </ScrollView>
+
     <LinearLayout
         android:id="@+id/bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -177,59 +237,63 @@
             <TextView
                 android:id="@+id/tv_collect"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:drawableTop="@mipmap/ic_launcher"
+                android:layout_weight="1"
                 android:drawablePadding="3dp"
+                android:drawableTop="@mipmap/ic_launcher"
                 android:gravity="center_vertical|center"
-                android:paddingLeft="10dp"
-                android:text="收藏"
                 android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
                 android:paddingTop="5dp"
+                android:text="收藏"
                 android:textColor="@color/color_max"
                 />
+
             <TextView
                 android:id="@+id/tv_chat"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:drawableTop="@mipmap/ic_launcher"
+                android:layout_weight="1"
                 android:drawablePadding="3dp"
+                android:drawableTop="@mipmap/ic_launcher"
                 android:gravity="center_vertical|center"
-                android:paddingLeft="10dp"
-                android:text="客服"
                 android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
                 android:paddingTop="5dp"
+                android:text="客服"
+                android:visibility="gone"
                 android:textColor="@color/color_max"
                 />
+
             <TextView
                 android:id="@+id/tv_"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:drawableTop="@mipmap/ic_launcher"
+                android:layout_weight="1"
                 android:drawablePadding="3dp"
+                android:drawableTop="@mipmap/ic_launcher"
                 android:gravity="center_vertical|center"
-                android:paddingLeft="10dp"
-                android:text="电话"
                 android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
                 android:paddingTop="5dp"
+                android:text="电话"
                 android:textColor="@color/color_max"
                 />
 
         </LinearLayout>
+
         <TextView
             android:id="@+id/tv_bm"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:paddingLeft="10dp"
-            android:text="我要报名"
-            android:gravity="center"
-            android:drawablePadding="5dp"
-            android:padding="10dp"
-            android:textColor="@color/white"
             android:background="@color/color_caritem_money"
+            android:drawablePadding="5dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:paddingLeft="10dp"
+            android:text="立即预定"
+            android:textColor="@color/white"
             />
     </LinearLayout>
 </RelativeLayout>

@@ -1,23 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/background"
+                android:clipToPadding="true"
                 android:fitsSystemWindows="true"
-                android:clipToPadding="true">
+                android:orientation="vertical">
+
     <ScrollView
-        android:layout_above="@+id/bottom"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
+        android:layout_above="@+id/bottom"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
             <dfy.demo.widget.ToolTitle
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
@@ -28,62 +31,68 @@
                 android:id="@+id/tv_add"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/color_mid"
-                android:textSize="@dimen/dimens_16sp"
+                android:background="@color/white"
                 android:padding="10dp"
                 android:text="地址"
-                android:background="@color/white"
+                android:textColor="@color/color_mid"
+                android:textSize="@dimen/dimens_16sp"
                 />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
+                android:paddingBottom="5dp"
                 android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="5dp">
+                android:paddingRight="10dp">
+
                 <TextView
                     android:id="@+id/tv_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:text="2019.5.6"
                     android:textColor="@color/color_mid"
                     android:textSize="@dimen/dimens_16sp"
-                    android:text="2019.5.6"
-                    android:background="@color/white"
                     />
+
                 <TextView
                     android:id="@+id/tv_type"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/color_mid"
-                    android:textSize="@dimen/dimens_16sp"
-                    android:text="A套餐"
                     android:background="@color/white"
                     android:paddingLeft="20dp"
+                    android:text="A套餐"
+                    android:textColor="@color/color_mid"
+                    android:textSize="@dimen/dimens_16sp"
                     />
+
                 <TextView
                     android:id="@+id/tv_person"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:paddingLeft="20dp"
+                    android:text="3人"
                     android:textColor="@color/color_mid"
                     android:textSize="@dimen/dimens_16sp"
-                    android:text="3人"
-                    android:paddingLeft="20dp"
-                    android:background="@color/white"
                     />
             </LinearLayout>
 
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="2dp"
-                android:layout_margin="5dp">
+                android:layout_margin="5dp"
+                app:cardCornerRadius="2dp">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
+                    android:background="@color/white"
                     android:divider="@drawable/divider_linear"
-                    android:showDividers="middle"
-                    android:background="@color/white">
+                    android:orientation="vertical"
+                    android:showDividers="middle">
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -91,11 +100,13 @@
                         android:text="联系人信息:"
                         android:textColor="@color/color_min"
                         android:textSize="@dimen/dimens_16sp"/>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical">
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
@@ -103,61 +114,68 @@
                             android:text="姓名:"
                             android:textColor="@color/color_mid"
                             android:textSize="@dimen/dimens_16sp"/>
+
                         <EditText
                             android:id="@+id/et_name"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:textSize="@dimen/dimens_16sp"
-                            android:textColorHint="@color/color_mid"
+                            android:hint="必填"
                             android:textColor="@color/color_mid"
-                            android:hint="必填"/>
+                            android:textColorHint="@color/color_mid"
+                            android:textSize="@dimen/dimens_16sp"/>
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical">
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:text="性别:"
-                            android:paddingLeft="10dp"
                             android:gravity="center_vertical"
+                            android:paddingLeft="10dp"
+                            android:text="性别:"
                             android:textColor="@color/color_mid"
                             android:textSize="@dimen/dimens_16sp"/>
+
                         <RadioGroup
                             android:id="@+id/rg_sex"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
+
                             <RadioButton
                                 android:id="@+id/rb_man"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:drawablePadding="5dp"
+                                android:gravity="center_vertical"
                                 android:text="男"
                                 android:textColor="@color/color_mid"
-                                android:textSize="@dimen/dimens_16sp"
-                                android:gravity="center_vertical"
-                                android:drawablePadding="5dp"/>
+                                android:textSize="@dimen/dimens_16sp"/>
+
                             <RadioButton
                                 android:id="@+id/rb_woman"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:drawablePadding="5dp"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="10dp"
                                 android:text="女"
                                 android:textColor="@color/color_mid"
-                                android:textSize="@dimen/dimens_16sp"
-                                android:gravity="center_vertical"
-                                android:drawablePadding="5dp"
-                                android:paddingLeft="10dp"/>
+                                android:textSize="@dimen/dimens_16sp"/>
                         </RadioGroup>
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical">
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
@@ -165,21 +183,24 @@
                             android:text="手机号码:"
                             android:textColor="@color/color_mid"
                             android:textSize="@dimen/dimens_16sp"/>
+
                         <EditText
                             android:id="@+id/et_tel"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:textSize="@dimen/dimens_16sp"
-                            android:textColorHint="@color/color_mid"
+                            android:hint="必填"
                             android:textColor="@color/color_mid"
-                            android:hint="必填"/>
+                            android:textColorHint="@color/color_mid"
+                            android:textSize="@dimen/dimens_16sp"/>
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical">
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
@@ -187,41 +208,46 @@
                             android:text="邮箱:"
                             android:textColor="@color/color_mid"
                             android:textSize="@dimen/dimens_16sp"/>
+
                         <EditText
                             android:id="@+id/et_email"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:textSize="@dimen/dimens_16sp"
-                            android:textColorHint="@color/color_mid"
+                            android:hint="必填"
                             android:textColor="@color/color_mid"
-                            android:hint="必填"/>
+                            android:textColorHint="@color/color_mid"
+                            android:textSize="@dimen/dimens_16sp"/>
                     </LinearLayout>
                 </LinearLayout>
             </android.support.v7.widget.CardView>
-           <RelativeLayout
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content">
-               <android.support.v7.widget.RecyclerView
-                   android:id="@+id/recy"
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
 
-           </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+
+            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:paddingLeft="10dp"
+                android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:gravity="center_vertical">
+                android:paddingLeft="10dp">
+
                 <CheckBox
                     android:id="@+id/cb_check"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
                     />
+
                 <TextView
                     android:id="@+id/tv_xieyi"
                     android:layout_width="wrap_content"
@@ -235,34 +261,36 @@
         android:id="@+id/bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:orientation="horizontal">
+
         <TextView
             android:id="@+id/tv_totalmoney"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@color/white"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="￥1600"
             android:textColor="@color/color_caritem_money"
             android:textSize="@dimen/dimens_16sp"
-            android:padding="15dp"
-            android:gravity="center"
-            android:text="￥1600"
             />
+
         <TextView
             android:id="@+id/tv_order_submit"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@color/white"
+            android:backgroundTint="@color/color_caritem_money"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="提交订单"
             android:textColor="@color/white"
             android:textSize="@dimen/dimens_16sp"
-            android:backgroundTint="@color/color_caritem_money"
-            android:padding="15dp"
-            android:gravity="center"
-            android:text="提交订单"
             />
     </LinearLayout>
 </RelativeLayout>

@@ -1,68 +1,65 @@
 package dfy.demo.product;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.LinearLayoutManager;
-import android.view.View;
-import android.widget.LinearLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
-import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import java.util.ArrayList;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import dfy.demo.BaseDemoActivity;
 import dfy.demo.R;
-import dfy.demo.product.adapter.CarItemAdapter;
-import dfy.demo.product.listener.OnClickListener;
-import dfy.demo.widget.RecyclerViewDivider;
+import dfy.demo.product.fragment.LocalFragment;
+import dfy.demo.product.fragment.OverSeaFragment;
 import dfy.demo.widget.ToolTitle;
-import dfy.networklibrary.base.BaseActivity;
-import dfy.networklibrary.widget.RecyclerViewEmptyView;
-import okhttp3.MultipartBody;
+import dfy.networklibrary.widget.ViewPagerNoSlide;
 
 /**
  * Created by Admin on 2017/9/4.
  */
 
-public  class CarItemActiviy extends BaseDemoActivity {
+public class CarItemActiviy extends BaseDemoActivity {
+    @BindView(R.id.toolbar)
+    ToolTitle mToolbar;
+    @BindView(R.id.rb_one)
+    RadioButton mRbOne;
+    @BindView(R.id.rb_two)
+    RadioButton mRbTwo;
+    @BindView(R.id.rg_check)
+    RadioGroup mRgCheck;
+    @BindView(R.id.vp_item)
+    ViewPagerNoSlide mVpItem;
 
-    private ToolTitle mToolbar;
-    private SmartRefreshLayout mRefrash;
-    private RecyclerViewEmptyView mRcItemShow;
-    private LinearLayout mEmpty;
-    private CarItemAdapter mCarItemAdapter;
+
+    private ArrayList<Fragment> mFragments;
+    private LocalFragment mLocalFragment;
+    private OverSeaFragment mSeaFragment;
 
 
-    /**
-     * 初始化RewcyclerView
-     */
-    private void initRecyclerView() {
-        mRcItemShow.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
-        mRcItemShow.setEmptyView(mEmpty);
-        mCarItemAdapter=new CarItemAdapter(this);
-        mRcItemShow.setAdapter(mCarItemAdapter);
-        mRcItemShow.addItemDecoration(new RecyclerViewDivider(mContext,LinearLayoutManager.VERTICAL));
-        mCarItemAdapter.setOnClickListener(new OnClickListener() {
-            @Override
-            public void OnClickListener(View view, int position) {
-                startActivity(new Intent(mContext,CarDetailAcitivity.class));
-            }
-        });
-    }
 
     @Override
     public void initView(Bundle savedInstanceState) {
-        mToolbar = (ToolTitle) findViewById(R.id.toolbar);
-        mRefrash = (SmartRefreshLayout) findViewById(R.id.refrash);
-        mRcItemShow = (RecyclerViewEmptyView) findViewById(R.id.rc_item_show);
-        mEmpty = (LinearLayout) findViewById(R.id.empty);
+        mLocalFragment=LocalFragment.newInstance();
+        mSeaFragment =OverSeaFragment.newInstance();
 
-        mToolbar.setBackground(R.color.color_tool_bg_red);
-        mToolbar.setToolTitle("自驾租车");
-        mToolbar.setToolRightOneVisiable(false)
-                .setToolRightTwoVisable(false);
+        mFragments=new ArrayList<>();
+        mFragments.add(mLocalFragment);
+        mFragments.add(mSeaFragment);
+        mVpItem.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
+            @Override
+            public Fragment getItem(int position) {
+                return mFragments.get(position);
+            }
 
-        initRecyclerView();
+            @Override
+            public int getCount() {
+                return mFragments!=null?mFragments.size():0;
+            }
+        });
     }
 
     @Override
@@ -73,12 +70,14 @@ public  class CarItemActiviy extends BaseDemoActivity {
     @Override
     public void setListener() {
         //返回上一级
-        mToolbar.setBackListener(this);
+
+        //查看更多评价
+
+
     }
 
     @Override
     protected int getInflaterView() {
         return R.layout.activiy_caritem;
     }
-
 }

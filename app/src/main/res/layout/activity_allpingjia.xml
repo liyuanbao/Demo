@@ -1,59 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="@color/background"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:fitsSystemWindows="true"
               android:orientation="vertical">
 
-    <include
-        android:id="@+id/in_head"
-        layout="@layout/title_chose_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <LinearLayout
+    <dfy.demo.widget.ToolTitle
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/tv_all"
-            style="@style/tv_weight_dimans16_style"
-            android:background="@color/white"
-            android:text="全部分类"/>
-
-        <TextView
-            android:id="@+id/tv_"
-            style="@style/tv_weight_dimans16_style"
-            android:layout_marginRight="0.5dp"
-            android:background="@color/white"
-            android:text="全部分类"/>
-    </LinearLayout>
+        android:background="@color/color_tool_bg_red">
+    </dfy.demo.widget.ToolTitle>
 
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:id="@+id/refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="5dp"
-        android:background="@color/white">
-
+        android:layout_height="match_parent">
         <com.scwang.smartrefresh.layout.header.ClassicsHeader
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_srlSpinnerStyle="Translate">
+            app:srlClassicsSpinnerStyle="Translate">
         </com.scwang.smartrefresh.layout.header.ClassicsHeader>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recy"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
         </android.support.v7.widget.RecyclerView>
 
         <com.scwang.smartrefresh.layout.footer.ClassicsFooter
             android:layout_width="match_parent"
             android:layout_height="wrap_content"></com.scwang.smartrefresh.layout.footer.ClassicsFooter>
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
-
 </LinearLayout>
