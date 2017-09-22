@@ -13,24 +13,30 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.gyf.barlibrary.ImmersionBar;
+
 import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import dfy.demo.bean.DetailBean;
 import dfy.demo.utils.StatusBarUtils;
 import dfy.demo.utils.SystemStatusManager;
 import dfy.networklibrary.App;
 import dfy.networklibrary.base.BaseActivity;
+import dfy.networklibrary.net.BaseBean;
 
 /**
  * Created by Admin on 2017/9/5.
  */
 
-public abstract class BaseDemoActivity extends BaseActivity {
+public abstract class BaseDemoActivity<T> extends BaseActivity {
 
     private LinearLayout linearLayout;
     Unbinder mBind;
     private Bundle mBundle;
+
+    private OnRetryConnection mOnRetryConnection;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,8 +46,13 @@ public abstract class BaseDemoActivity extends BaseActivity {
         linearLayout=new LinearLayout(mContext);
         linearLayout.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT));
         setContentView(linearLayout);
-        App.getActivityManager().pushActivity(this);
 
+        StatusBarUtils.StatusBarLightMode(this);
+
+        StatusBarUtils.StatusBarLightMode(this);
+        new SystemStatusManager(this).setTranslucentStatus(R.color.color_tool_bg_red);
+
+        App.getActivityManager().pushActivity(this);
 
         if (isNetLoading()) {
             linearLayout.removeAllViews();
@@ -91,10 +102,17 @@ public abstract class BaseDemoActivity extends BaseActivity {
         return inflate;
     }
 
+
+    public BaseDemoActivity setOnRetryConnection(OnRetryConnection onRetryConnection) {
+        mOnRetryConnection = onRetryConnection;
+        return this;
+    }
+
     /**
-     * 加载错误页
+     * 加载失败错误页
+     * 点击后重新加载
      */
-    protected void loadingErrorView() {
+    public void loadingErrorView() {
         View inflate = LayoutInflater.from(mContext).inflate(R.layout.su_view_error_server, linearLayout, false);
         linearLayout.removeAllViews();
         linearLayout.addView(inflate);
@@ -102,10 +120,18 @@ public abstract class BaseDemoActivity extends BaseActivity {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                App.getActivityManager().currentActivity().startActivity(new Intent(App.getActivityManager().currentActivity(),App.getActivityManager().currentActivity().getClass()));
-                finish();
+
+//                App.getActivityManager().currentActivity().startActivity(new Intent(App.getActivityManager().currentActivity(),App.getActivityManager().currentActivity().getClass()));
+//                finish();
+               if (mOnRetryConnection!=null){
+                   mOnRetryConnection.onRetryConnction();
+               }
             }
         });
+    }
+
+    @Override
+    public void loadFail() {
 
     }
 
@@ -127,5 +153,19 @@ public abstract class BaseDemoActivity extends BaseActivity {
         if (mBind!=null){
             mBind.unbind();
         }
+        App.getActivityManager().popActivity(this);
     }
+
+
+    public void loadSuccess(T baseBean){
+        loadSuccessView();
+    }
+    /**
+     * 网络请求重连接口
+     */
+    public interface OnRetryConnection{
+
+        void onRetryConnction();
+    }
+
 }

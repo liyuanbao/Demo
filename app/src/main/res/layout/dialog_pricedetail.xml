@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#bb333333"
+                android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ln_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="xxxxx"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimens_18sp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end">
+
+            <TextView
+                android:id="@+id/tv_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:drawablePadding="5dp"
+                android:drawableRight="@mipmap/ic_launcher"
+                android:gravity="end|center_vertical"
+                android:padding="10dp"
+                android:text="取消"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimens_18sp"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ln_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/text_wrap_dimans16_style"
+            android:text="总额"
+            android:textColor="@color/color_caritem_money"/>
+        <TextView
+            android:id="@+id/tv_money"
+            style="@style/text_wrap_dimans16_style"
+            android:layout_width="match_parent"
+            android:text="1000"
+            android:gravity="end"
+            android:paddingLeft="10dp"
+            android:textColor="@color/color_caritem_money"/>
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

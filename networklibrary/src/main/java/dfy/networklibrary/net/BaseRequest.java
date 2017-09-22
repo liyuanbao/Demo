@@ -26,7 +26,7 @@ import dfy.networklibrary.loadingdialog.view.LoadingDialog;
 
 public class BaseRequest<T extends BaseBean> {
 
-    public static  int JSON_PARE=0;//解析失败
+    public static int JSON_PARE = 0;//解析失败
     //请求url
     private String URL;
     //请求参数
@@ -46,7 +46,7 @@ public class BaseRequest<T extends BaseBean> {
     LoadingDialog.Speed speed = LoadingDialog.Speed.SPEED_TWO;
     private boolean intercept_back_event = false;//是否拦截返回键
     private int repeatTime = 0;
-    private boolean isFirstLoading=false;
+    private boolean isFirstLoading = false;
 
     //网络请求失败
     private LoadingFailed mLoadingFailed;
@@ -128,8 +128,8 @@ public class BaseRequest<T extends BaseBean> {
         return this;
     }
 
-    public BaseRequest requesetNoCodeSucess(NetRequestData netRequestData){
-        this.mRequestData=netRequestData;
+    public BaseRequest requesetNoCodeSucess(NetRequestData netRequestData) {
+        this.mRequestData = netRequestData;
         return this;
     }
 
@@ -142,9 +142,9 @@ public class BaseRequest<T extends BaseBean> {
     public void netGetRequest() {
         if (!NetworkUtils.isConnected()) {
             //如果进入某个页面就加载网络
-            if (isFirstLoading){
+            if (isFirstLoading) {
                 mLoadingFailed.loadFailed();
-            }else {
+            } else if (isLoading) {
                 mLoadingDialog
                         .setInterceptBack(intercept_back_event)
                         .setLoadSpeed(speed)
@@ -176,21 +176,20 @@ public class BaseRequest<T extends BaseBean> {
                     public void onFinish() {
                         super.onFinish();
                         //加载成功
-                        if (isLoading) {
-                            mLoadingDialog.loadSuccess();
-                        }
+//                        if (isLoading) {
+//                            mLoadingDialog.loadSuccess();
+//                        }
                     }
 
                     @Override
                     public void onError(Response<String> response) {
                         super.onError(response);
 
-                        if (isFirstLoading){
+                        if (isFirstLoading) {
                             mLoadingFailed.loadFailed();
-                        }else {
-                            if (isLoading) {
-                                mLoadingDialog.loadFailed();
-                            }
+                        } else if (isLoading) {
+                            System.out.println("执行失败");
+                            mLoadingDialog.loadRequestFailed();
                         }
                     }
 
@@ -214,6 +213,9 @@ public class BaseRequest<T extends BaseBean> {
                         }
                         //解析成功
                         if (dataType != null) {
+                            if (isLoading) {
+                                mLoadingDialog.loadSuccess();
+                            }
                             //返回全部数据
 //                            mRequestSuccess.needResultCode(dataType);
                             if (dataType.getCode() == ConstantNet.RESPONCE_CODE_INVALID) {
@@ -228,7 +230,7 @@ public class BaseRequest<T extends BaseBean> {
                             if (isJsonException) {
                                 if (mLoadingDialog != null) {
                                     mLoadingFailed.loadFailed();
-                                    mLoadingDialog.loadJsonFailed();
+//                                    mLoadingDialog.loadJsonFailed();
                                 }
                             }
                         }
@@ -242,13 +244,18 @@ public class BaseRequest<T extends BaseBean> {
     public void netPostRequest() {
 
         if (!NetworkUtils.isConnected()) {
-            mLoadingDialog
-                    .setInterceptBack(intercept_back_event)
-                    .setLoadSpeed(speed)
-                    .closeSuccessAnim()
-                    .setRepeatCount(repeatTime)
-                    .show();
-            mLoadingDialog.loadNetFailed();
+            //如果进入某个页面就加载网络
+            if (isFirstLoading) {
+                mLoadingFailed.loadFailed();
+            } else if (isLoading) {
+                mLoadingDialog
+                        .setInterceptBack(intercept_back_event)
+                        .setLoadSpeed(speed)
+                        .closeSuccessAnim()
+                        .setRepeatCount(repeatTime)
+                        .show();
+                mLoadingDialog.loadNetFailed();
+            }
             return;
         }
 
@@ -263,29 +270,33 @@ public class BaseRequest<T extends BaseBean> {
                         super.onStart(request);
                         if (isLoading) {
                             mLoadingDialog.setLoadingText("加载中...")
-                                    .setInterceptBack(intercept_back_event)
                                     .setLoadSpeed(speed)
                                     .closeSuccessAnim()
                                     .setRepeatCount(repeatTime)
                                     .show();
                         }
                     }
+
                     @Override
                     public void onFinish() {
                         super.onFinish();
                         //加载成功
-                        if (isLoading) {
-                            mLoadingDialog.loadSuccess();
-                        }
+//                        if (isLoading) {
+//                            mLoadingDialog.loadSuccess();
+//                        }
                     }
 
                     @Override
                     public void onError(Response<String> response) {
                         super.onError(response);
-                        if (isLoading) {
-                            mLoadingDialog.loadFailed();
+                        if (isFirstLoading) {
+                            mLoadingFailed.loadFailed();
+                        } else if (isLoading) {
+                            System.out.println("执行失败");
+                            mLoadingDialog.loadRequestFailed();
                         }
                     }
+
                     @Override
                     public void onSuccess(Response<String> response) {
                         if (mGson == null) mGson = new Gson();
@@ -295,16 +306,23 @@ public class BaseRequest<T extends BaseBean> {
                         } catch (Exception e) {
                             e.printStackTrace();
                             Log.e(ConstantNet.JSONEXCEPTION, e.getMessage());
+                            if (isJsonException) {
+                                if (mLoadingDialog != null) {
+                                    mLoadingDialog.loadJsonFailed();
+                                }
+                            }
                         } finally {
                             printJson(response.body());
                         }
                         //解析成功
                         if (dataType != null) {
+                            if (isLoading) {
+                                mLoadingDialog.loadSuccess();
+                            }
                             //返回全部数据
+//                            mRequestSuccess.needResultCode(dataType);
                             if (dataType.getCode() == ConstantNet.RESPONCE_CODE_INVALID) {
                                 //当返回码为多少时，账号失效，此时需要用户重新登陆，清空用户信息
-                                App.getActivityManager().currentActivity()
-                                        .startActivity(new Intent());
                             } else if (dataType.getCode() == ConstantNet.RESPONCE_CODE_SERVICE) {
                                 //服务其错误
                             } else {
@@ -315,7 +333,7 @@ public class BaseRequest<T extends BaseBean> {
                             if (isJsonException) {
                                 if (mLoadingDialog != null) {
                                     mLoadingFailed.loadFailed();
-                                    mLoadingDialog.loadJsonFailed();
+//                                    mLoadingDialog.loadJsonFailed();
                                 }
                             }
                         }
@@ -326,11 +344,13 @@ public class BaseRequest<T extends BaseBean> {
 
     /**
      * 返回数据
+     *
      * @param <Y>
      */
     public interface NetRequestSuccess<Y extends BaseBean> {
         /**
          * 需要结果码
+         *
          * @param y
          */
         void needResultCode(Y y);
@@ -339,7 +359,7 @@ public class BaseRequest<T extends BaseBean> {
     /**
      * 加载失败，包括数据解析，网络请求，服务器等错误
      */
-    public interface LoadingFailed{
+    public interface LoadingFailed {
 
         void loadFailed();
     }
@@ -348,10 +368,12 @@ public class BaseRequest<T extends BaseBean> {
     public interface NetRequestData<T> {
         /**
          * 需要结果码
+         *
          * @param y
          */
         void noNeedResultCode(T y);
     }
+
     /**
      * 打印URL
      */

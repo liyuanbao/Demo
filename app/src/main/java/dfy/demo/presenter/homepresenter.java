@@ -32,14 +32,8 @@ public class homepresenter<H extends BaseView, D extends BaseBean> extends BaseP
                 .setURL(ConstantNet.LAW_DETAIL)
                 .addHttpParams(hashMap)
                 .setDataType(DetailBean.class)
-                .setIsLoading(false)
+                .setIsLoading(true)
                 .setIsJsonException(true)
-                .setLoadingFailed(new BaseRequest.LoadingFailed() {
-                    @Override
-                    public void loadFailed() {
-                        getInterfaceUI.fail();
-                    }
-                })
                 .requestCodeSuccess(new BaseRequest.NetRequestSuccess<DetailBean>() {
                     @Override
                     public void needResultCode(DetailBean baseBean) {

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-    android:background="@color/background">
+              android:background="@color/background"
+              android:fitsSystemWindows="true"
+              android:orientation="vertical">
 
     <dfy.demo.widget.ToolTitle
         android:id="@+id/toolbar"
@@ -36,6 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -43,6 +45,7 @@
             android:background="@color/white"
             android:orientation="horizontal"
             android:padding="10dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -55,9 +58,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="end"
+                android:text="xxx"
                 android:textColor="@color/color_mid"
-                android:textSize="@dimen/dimens_16sp"
-                android:text="xxx"/>
+                android:textSize="@dimen/dimens_16sp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -66,6 +69,7 @@
             android:background="@color/white"
             android:orientation="horizontal"
             android:padding="10dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -78,9 +82,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="end"
+                android:text="xxx"
                 android:textColor="@color/color_mid"
-                android:textSize="@dimen/dimens_16sp"
-                android:text="xxx"/>
+                android:textSize="@dimen/dimens_16sp"/>
         </LinearLayout>
 
 
@@ -91,6 +95,7 @@
             android:background="@color/white"
             android:orientation="horizontal"
             android:padding="10dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -103,16 +108,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="end"
+                android:text="xxx"
                 android:textColor="@color/color_mid"
-                android:textSize="@dimen/dimens_16sp"
-                android:text="xxx"/>
+                android:textSize="@dimen/dimens_16sp"/>
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:orientation="horizontal"
             android:padding="10dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -125,9 +132,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="end"
+                android:text="xxx"
                 android:textColor="@color/color_mid"
-                android:textSize="@dimen/dimens_16sp"
-                android:text="xxx"/>
+                android:textSize="@dimen/dimens_16sp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -137,6 +144,7 @@
             android:background="@color/white"
             android:orientation="horizontal"
             android:padding="10dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -149,11 +157,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="end"
+                android:text="xxx"
                 android:textColor="@color/color_mid"
-                android:textSize="@dimen/dimens_16sp"
-                android:text="xxx"/>
+                android:textSize="@dimen/dimens_16sp"/>
         </LinearLayout>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -164,30 +173,29 @@
             android:id="@+id/tv_miaoshu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="15dp"
-            android:textColor="@color/color_mid"
-            android:textSize="@dimen/dimens_15sp"
             android:gravity="center"
-            android:text="xxx"/>
+            android:padding="15dp"
+            android:text="xxx"
+            android:textColor="@color/color_mid"
+            android:textSize="@dimen/dimens_15sp"/>
 
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/button_radius_style">
 
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:layout_margin="10dp"
-           android:background="@drawable/button_radius_style">
-
-           <TextView
-               android:id="@+id/tv_ordering"
-               android:layout_width="match_parent"
-               android:layout_height="match_parent"
-               android:text="返回继续订票"
-               android:gravity="center"
-               android:textSize="@dimen/dimens_16sp"
-               android:textColor="@color/color_tool_bg_red"
-               android:layout_margin="10dp"/>
-       </LinearLayout>
+            <TextView
+                android:id="@+id/tv_ordering"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:text="返回继续订票"
+                android:textColor="@color/color_tool_bg_red"
+                android:textSize="@dimen/dimens_16sp"/>
+        </LinearLayout>
 
 
     </LinearLayout>

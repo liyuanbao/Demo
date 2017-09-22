@@ -2,8 +2,6 @@ package dfy.demo;
 
 import android.os.Bundle;
 
-import dfy.networklibrary.widget.FragmentLazyLoad;
-
 /**
  * Created by Admin on 2017/9/1.
  */
@@ -17,6 +15,16 @@ public class DemoFragmennt extends FragmentLazyLoad {
 
     @Override
     public void initView(Bundle savedInstanceState) {
+
+    }
+
+    @Override
+    public void loadingErrorView() {
+
+    }
+
+    @Override
+    public void loadFail() {
 
     }
 

@@ -1,6 +1,7 @@
-package dfy.networklibrary.widget;
+package dfy.demo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
@@ -10,8 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import butterknife.ButterKnife;
+import dfy.networklibrary.App;
 import dfy.networklibrary.base.BaseView;
 
 
@@ -36,6 +40,7 @@ public abstract class FragmentLazyLoad extends Fragment implements BaseView{
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(setInflaterView(), container, false);
+        ButterKnife.bind(this,view);
         isInit = true;
         mContext=getContext();
         /**初始化的时候去加载数据**/
@@ -59,6 +64,13 @@ public abstract class FragmentLazyLoad extends Fragment implements BaseView{
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         isCanLoadData();
+    }
+
+    /**
+     * 加载错误页
+     */
+    public void loadingErrorView() {
+//        View inflate = LayoutInflater.from(mContext).inflate(R.layout.su_view_error_server, linearLayout, false);
     }
 
 

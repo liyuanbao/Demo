@@ -24,6 +24,9 @@ public class BasePresenter<T extends BaseView, B extends BaseBean> {
 
     private SuccessResponse mSuccessResponse;
 
+    private LoadingFaild mLoadingFaild;
+
+
     public BasePresenter<T, B> setSuccessResponse(SuccessResponse successResponse) {
         mSuccessResponse = successResponse;
         return this;
@@ -45,6 +48,12 @@ public class BasePresenter<T extends BaseView, B extends BaseBean> {
         return this;
     }
 
+
+    public BasePresenter setLoadingFaild(LoadingFaild loadingFaild) {
+        mLoadingFaild = loadingFaild;
+        return this;
+    }
+
     /**
      * 网络请求二次封装
      *
@@ -55,11 +64,17 @@ public class BasePresenter<T extends BaseView, B extends BaseBean> {
                 .addHttpParams(mHashMap)
                 .setDataType(clazz)
                 .setIsLoading(true)
+                .setFirstLoading(false)
                 .requestCodeSuccess(new BaseRequest.NetRequestSuccess<B>() {
                     @Override
                     public void needResultCode(B commonBean) {
-//                        getInterfaceUI.entryItem(commonBean);
                         mSuccessResponse.success(commonBean);
+                    }
+                })
+                .setLoadingFailed(new BaseRequest.LoadingFailed() {
+                    @Override
+                    public void loadFailed() {
+                        mLoadingFaild.loadFailed();
                     }
                 })
                 .netGetRequest();
@@ -71,5 +86,12 @@ public class BasePresenter<T extends BaseView, B extends BaseBean> {
         void success(B b);
     }
 
+
+    /**
+     * 加载失败，包括网络请求
+     */
+    public interface LoadingFaild{
+        void loadFailed();
+    }
 
 }

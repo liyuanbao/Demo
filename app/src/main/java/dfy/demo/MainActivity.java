@@ -2,6 +2,10 @@ package dfy.demo;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,6 +18,7 @@ import com.flyco.dialog.widget.ActionSheetDialog;
 import com.flyco.dialog.widget.NormalDialog;
 import com.flyco.dialog.widget.popup.BubblePopup;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -34,7 +39,7 @@ import dfy.networklibrary.net.ConstantNet;
 import static dfy.demo.ApplictionDemo.getActivityManager;
 
 
-public class MainActivity extends BaseDemoActivity implements HomeView {
+public class MainActivity extends BaseDemoActivity<DetailBean> implements HomeView {
 
     @BindView(R.id.tv)
     TextView mTv;
@@ -48,6 +53,10 @@ public class MainActivity extends BaseDemoActivity implements HomeView {
     TextView mTvContext;
     @BindView(R.id.test)
     TextView mTest;
+    @BindView(R.id.refresh)
+    SwipeRefreshLayout mRefresh;
+    @BindView(R.id.vp)
+    ViewPager mVp;
 
     private homepresenter<BaseView, BaseBean<List<DetailBean.DataBean>>> mHomepresenter;
 
@@ -65,6 +74,59 @@ public class MainActivity extends BaseDemoActivity implements HomeView {
             }
         });
 
+
+        mRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getData();
+            }
+        });
+
+
+        final ArrayList<Fragment> mFragment=new ArrayList<>();
+
+        mFragment.add(new TestFragment());
+        mFragment.add(new TestFragment());
+        mFragment.add(new TestFragment());
+        mVp.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
+            @Override
+            public Fragment getItem(int position) {
+                return mFragment.get(position);
+            }
+
+            @Override
+            public int getCount() {
+                return mFragment!=null?mFragment.size():0;
+            }
+        });
+    }
+
+
+    private void getData() {
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("page", "1");
+        hashMap.put("areaId", "");
+        hashMap.put("dataId", "");
+        hashMap.put("year", "");
+        new BasePresenter<HomeView, DetailBean>()
+                .setURL(ConstantNet.LAW_DETAIL)
+                .setHashMap(hashMap)
+                .setClazz(DetailBean.class)
+                .setSuccessResponse(new BasePresenter.SuccessResponse<DetailBean>() {
+                    @Override
+                    public void success(DetailBean baseBean) {
+                        loadSuccess(baseBean);
+                    }
+                })
+                .setLoadingFaild(new BasePresenter.LoadingFaild() {
+                    @Override
+                    public void loadFailed() {
+                        fail();
+                    }
+                })
+                .CommonNetRequest();
+
+        mRefresh.setRefreshing(false);
     }
 
     @Override
@@ -81,36 +143,36 @@ public class MainActivity extends BaseDemoActivity implements HomeView {
     @Override
     public void initData() {
 
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("page", "1");
-        hashMap.put("areaId", "");
-        hashMap.put("dataId", "");
-        hashMap.put("year", "");
-        new BasePresenter<HomeView, DetailBean>()
-                .setURL(ConstantNet.LAW_DETAIL)
-                .setHashMap(hashMap)
-                .setClazz(DetailBean.class)
-                .setSuccessResponse(new BasePresenter.SuccessResponse<DetailBean>() {
-                    @Override
-                    public void success(DetailBean baseBean) {
-                        getIndex(baseBean);
-                    }
-                }).CommonNetRequest();
     }
 
 
     @Override
     public void getIndex(DetailBean homeBean) {
-        System.out.println("加载成功了");
-        loadSuccessView();
-        mTvContext.setText(homeBean.getData().toString());
+//        loadSuccessView();
+        if (homeBean.getCode() == 10000) {
+            mTvContext.setText(homeBean.getData().toString());
+        }
 
+
+    }
+
+    @Override
+    public void loadSuccess(DetailBean baseBean) {
+        super.loadSuccess(baseBean);
+        getIndex(baseBean);
     }
 
     @Override
     public void fail() {
         loadingErrorView();
+        setOnRetryConnection(new OnRetryConnection() {
+            @Override
+            public void onRetryConnction() {
+                getData();
+            }
+        });
     }
+
 
     @Override
     public void setListener() {
@@ -139,6 +201,7 @@ public class MainActivity extends BaseDemoActivity implements HomeView {
     private void myDialog() {
         BaseDilog.Builder builder = new BaseDilog.Builder(mContext);
         builder.setMsg("ddd")
+                .setTitle("sss")
                 .show();
     }
 
@@ -196,4 +259,10 @@ public class MainActivity extends BaseDemoActivity implements HomeView {
 
     }
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
+    }
 }

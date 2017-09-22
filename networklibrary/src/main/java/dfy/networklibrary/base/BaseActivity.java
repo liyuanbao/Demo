@@ -1,6 +1,8 @@
 package dfy.networklibrary.base;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -58,6 +60,23 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
         mToast.show();
     }
 
+
+    /**
+     * 跳转到另一个Activity传Intent值
+     * @param intent
+     */
+    public void beginActivity(Intent intent){
+        startActivity(intent);
+    }
+
+    /**
+     * 跳转到另一个Activity传Class值
+     * @param mActvity
+     */
+    public void beginActivity(Class mActvity){
+        Intent mIntent=new Intent(this,mActvity);
+        startActivity(mIntent);
+    }
     /**
      * 网络请求成功
      */

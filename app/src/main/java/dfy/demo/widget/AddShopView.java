@@ -55,6 +55,16 @@ public class AddShopView extends LinearLayout {
         mTvJian = (TextView) findViewById(R.id.tv_jian);
     }
 
+
+    public AddShopView setTwoVisiable(boolean isShow){
+        if (isShow){
+            mTvMoney.setVisibility(VISIBLE);
+        }else {
+            mTvMoney.setVisibility(GONE);
+        }
+        return this;
+    }
+
     /**
      * @param title
      * @return

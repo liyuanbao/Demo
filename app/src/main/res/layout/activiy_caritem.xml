@@ -1,79 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-    android:background="@color/background"
-    android:fitsSystemWindows="true"
-    android:clipToPadding="true">
-   <LinearLayout
-       android:orientation="vertical"
-       android:layout_width="wrap_content"
-       android:layout_height="match_parent">
-       <dfy.demo.widget.ToolTitle
-           android:id="@+id/toolbar"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content">
-       </dfy.demo.widget.ToolTitle>
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/background"
+                android:clipToPadding="true"
+                android:fitsSystemWindows="true"
+                android:orientation="vertical">
+    <dfy.demo.widget.ToolTitle
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_tool_bg_red">
+    </dfy.demo.widget.ToolTitle>
 
-       <com.scwang.smartrefresh.layout.SmartRefreshLayout
-           android:id="@+id/refrash"
-           android:layout_width="match_parent"
-           android:layout_height="match_parent">
-           <com.scwang.smartrefresh.layout.header.ClassicsHeader
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               app:srlClassicsSpinnerStyle="Translate"></com.scwang.smartrefresh.layout.header.ClassicsHeader>
-           <dfy.networklibrary.widget.RecyclerViewEmptyView
-               android:id="@+id/rc_item_show"
-               android:layout_width="match_parent"
-               android:layout_height="match_parent"
-               ></dfy.networklibrary.widget.RecyclerViewEmptyView>
-           <com.scwang.smartrefresh.layout.footer.ClassicsFooter
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               app:srlClassicsSpinnerStyle="Translate"></com.scwang.smartrefresh.layout.footer.ClassicsFooter>
+    <RadioGroup
+        android:id="@+id/rg_check"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/toolbar">
 
-       </com.scwang.smartrefresh.layout.SmartRefreshLayout>
-   </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/empty"
+        <RadioButton
+            android:id="@+id/rb_one"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="境内"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:button="@null"
+            android:textColor="@color/rb_text_blank_style"
+            android:textSize="@dimen/dimens_18sp"
+            android:checked="true"
+            android:padding="10dp"/>
+        <RadioButton
+            android:id="@+id/rb_two"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="境外"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:button="@null"
+            android:textColor="@color/rb_text_blank_style"
+            android:textSize="@dimen/dimens_18sp"
+            android:padding="10dp"/>
+    </RadioGroup>
+    <dfy.networklibrary.widget.ViewPagerNoSlide
+        android:id="@+id/vp_item"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical"
-        >
+        android:layout_below="@+id/rg_check">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
-            android:src="@drawable/su_ic_empty"
-            />
+    </dfy.networklibrary.widget.ViewPagerNoSlide>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="30dp"
-            android:gravity="center_horizontal"
-            android:text="暂无内容"
-            android:textColor="#929292"
-            android:textSize="16sp"
-            />
-
-        <TextView
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:background="#ededed"
-            android:gravity="center"
-            android:text="刷新重试"
-            android:textColor="#929292"
-            android:textSize="18sp"
-            android:visibility="gone"
-            />
-    </LinearLayout>
 
 </RelativeLayout>

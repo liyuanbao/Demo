@@ -14,7 +14,6 @@ import butterknife.ButterKnife;
 import dfy.demo.BaseDemoActivity;
 import dfy.demo.R;
 import dfy.demo.product.adapter.TaoCanKuanAdapter;
-import dfy.demo.widget.RecyclerViewDivider;
 import dfy.demo.widget.ToolTitle;
 
 /**
@@ -22,17 +21,20 @@ import dfy.demo.widget.ToolTitle;
  */
 
 public class TaoCanChoseActivity extends BaseDemoActivity {
+
+
     @BindView(R.id.toolbar)
     ToolTitle mToolbar;
     @BindView(R.id.re_item)
     RecyclerView mReItem;
-    @BindView(R.id.tv_totalmoney)
-    TextView mTvTotalmoney;
-    @BindView(R.id.tv_next)
-    TextView mTvNext;
+    @BindView(R.id.tv_bm)
+    TextView mTvBm;
+    @BindView(R.id.tv_tel)
+    TextView mTvTel;
+    @BindView(R.id.tv_con)
+    TextView mTvCon;
     @BindView(R.id.bottom)
     LinearLayout mBottom;
-
     private TaoCanKuanAdapter mKuanAdapter;
 
     @Override
@@ -60,22 +62,21 @@ public class TaoCanChoseActivity extends BaseDemoActivity {
     /**
      * 初始化RecyclerViwe
      */
-    private void initRecyclerView(){
-        mReItem.setLayoutManager(new LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false));
-        mReItem.addItemDecoration(new DividerItemDecoration(mContext,DividerItemDecoration.VERTICAL));
-        mKuanAdapter=new TaoCanKuanAdapter(mContext);
+    private void initRecyclerView() {
+        mReItem.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
+        mReItem.addItemDecoration(new DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL));
+        mKuanAdapter = new TaoCanKuanAdapter(mContext);
         mReItem.setAdapter(mKuanAdapter);
     }
 
     @Override
     public void setListener() {
-        mTvNext.setOnClickListener(new View.OnClickListener() {
+        mTvCon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(mContext,OrderWriteActivity.class));
+                startActivity(new Intent(mContext, OrderWriteActivity.class));
             }
         });
     }
-
 
 }
